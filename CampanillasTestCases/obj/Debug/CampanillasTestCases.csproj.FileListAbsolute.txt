@@ -1,0 +1,13 @@
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\Database1.mdf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\Database1_log.ldf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\SampleDB.mdf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\SampleDB_log.ldf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasTestCases.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasTestCases.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasControlPrototype.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasControlPrototype.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.pdb
