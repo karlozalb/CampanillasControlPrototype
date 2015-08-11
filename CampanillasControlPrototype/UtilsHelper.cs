@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CampanillasControlPrototype
 {
-    public static class DataBaseDataHelper
+    public static class UtilsHelper
     {
         /// <summary>
         ///  Get the current day as an int (1-Monday...5-Friday).
@@ -56,23 +56,25 @@ namespace CampanillasControlPrototype
         /// <returns>The actual date</returns>
         public static DateTime getDateTimeByEntranceTime(int ptime)
         {
+            string today = DateTime.Now.ToShortDateString();
+
             switch (ptime)
             {              
                 case 1: //First class' time
-                    return Convert.ToDateTime("08:00 AM");
+                    return Convert.ToDateTime(today+" 08:00 AM");
                 case 2: //Second class' time
-                    return Convert.ToDateTime("09:00 AM");
+                    return Convert.ToDateTime(today + " 09:00 AM");
                 case 3: //Third class' time
-                    return Convert.ToDateTime("10:00 AM");
+                    return Convert.ToDateTime(today + " 10:00 AM");
                 case 4: //First class' time
-                    return Convert.ToDateTime("11:30 AM");
+                    return Convert.ToDateTime(today + " 11:30 AM");
                 case 5: //First class' time
-                    return Convert.ToDateTime("12:30 PM");
+                    return Convert.ToDateTime(today + " 12:30 PM");
                 case 6: //First class' time
-                    return Convert.ToDateTime("13:30 PM");
+                    return Convert.ToDateTime(today + " 13:30 PM");
             }
 
-            return Convert.ToDateTime("00:00 AM");
+            return Convert.ToDateTime(today + " 00:00 AM");
         }
     }    
 }

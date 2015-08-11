@@ -11,3 +11,15 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\Campanillas
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.pdb
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\Database1.mdf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\Database1_log.ldf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\ControlDB.mdf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\ControlDB_log.ldf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasTestCases.dll
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasTestCases.pdb
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasControlPrototype.exe
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasControlPrototype.pdb
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.csprojResolveAssemblyReference.cache
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.dll
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.pdb

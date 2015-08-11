@@ -26,3 +26,17 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\Campanillas
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB.mdf
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB_log.ldf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.exe.config
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.exe
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.pdb
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Database1.mdf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Database1_log.ldf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB.mdf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB_log.ldf
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.exe
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.pdb
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csprojResolveAssemblyReference.cache
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.MainWindow.resources
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.Properties.Resources.resources
+C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csproj.GenerateResource.Cache

@@ -86,55 +86,24 @@ namespace CampanillasControlPrototype
             }
         }
 
-        public void registerCheckIn(int pteacherid,DateTime pclockintime)
+        public void registerClockIn(int pteacherid,DateTime pclockintime,DateTime pactualtime,TimeSpan delay)
         {
-            //We get the current day of the week in order to get the time the teacher should have clocked in.
-            int day = DataBaseDataHelper.getCurrentDay(DateTime.Now.DayOfWeek);
-
-            string hoursToCheckIn = "";
-
-            //Firstly we need to check if the person has come late or not.
             using (SqlConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = fullConnectionString;
                 conn.Open();
-
-                SqlCommand command = new SqlCommand("SELECT * FROM Horarios WHERE id='" + pteacherid + "'", conn);
-
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        hoursToCheckIn = (string)reader[day];
-                    }
-                }                
-            }
-
-            //String to int conversion of class' hours.
-            string[] splittedHours = hoursToCheckIn.Split(',');
-            int[] intHours = new int[splittedHours.Length];
-
-            for (int i = 0; i < splittedHours.Length; i++)
-            {
-                intHours[i] = Convert.ToInt32(splittedHours[i]);
-            }
-
-            using (SqlConnection conn = new SqlConnection())
-            {
-                conn.ConnectionString = fullConnectionString;
-                conn.Open();
-
-                SqlCommand command = new SqlCommand("INSERT INTO Profesor_"+pteacherid+" ", conn);
+                
+                //OJITO, ESTO NO ESTÁ ACABADO, ESTO ESTÁ ASI PORQUE NO PUEDO PROBARLO EN EL PORTATIL
+                SqlCommand command = new SqlCommand("INSERT INTO Profesor_"+pteacherid+" (Columna1,Columna2,Columna3,Columna4) VALUES ('"+pteacherid+"','" + pclockintime+"','"+pactualtime+"','" + delay+"')", conn);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public void registerClockIn(int pteacherid)
+        /*public void registerClockIn(int pteacherid)
         {
             //We get the current day of the week in order to get the time the teacher should have clocked in.
-            int day = DataBaseDataHelper.getCurrentDay(DateTime.Now.DayOfWeek);
+            int day = UtilsHelper.getCurrentDay(DateTime.Now.DayOfWeek);
 
             //We get the current time to save it in the DB.
             string timeNow = DateTime.Now.ToString("HH:mm:ss tt");
@@ -156,7 +125,7 @@ namespace CampanillasControlPrototype
                    }
                }
            }
-        }
+        }*/
 
     }
    
