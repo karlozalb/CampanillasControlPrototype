@@ -22,7 +22,7 @@ namespace CampanillasControlPrototype
         {
             showCurrentTime();
 
-            mMainController = new MainController();
+            mMainController = new MainController(this);
         }
 
         private void dateTimer_Tick(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace CampanillasControlPrototype
            
             surroundingPaddingX = (this.Width - mainSplitContainer.Width) / 2;
             surroundingPaddingY = (this.Height - mainSplitContainer.Height) / 2;
-        }    
+        }       
 
         private void MainWindow_Resize(object sender, EventArgs e)
         {
@@ -47,6 +47,16 @@ namespace CampanillasControlPrototype
         private void showCurrentTime()
         {
             timeLabel.Text = "Hora actual: " + DateTime.Now.ToString("HH:mm:ss tt");
+        }
+
+        public void addItemToList(string pitem)
+        {
+            personalListBox.Items.Add(pitem);
+        }
+
+        public ListBox getPersonalListBox()
+        {
+            return personalListBox;
         }
         
     }

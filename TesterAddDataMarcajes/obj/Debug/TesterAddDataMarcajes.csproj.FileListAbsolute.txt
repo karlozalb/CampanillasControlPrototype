@@ -1,0 +1,8 @@
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\TesterAddDataMarcajes.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\CampanillasControlPrototype.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.Form1.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.Properties.Resources.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.csproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.pdb

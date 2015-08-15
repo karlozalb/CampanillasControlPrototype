@@ -75,7 +75,7 @@ namespace CampanillasControlPrototype
                 conn.Open();
 
                 SqlCommand command = new SqlCommand("CREATE TABLE [dbo].[Profesor_"+pid+"] ( " +
-                                                    "[Id]                INT      NOT NULL," +
+                                                    "[Id]                INT      IDENTITY (1, 1) NOT NULL," +
                                                     "[Fecha]             DATE     NULL," +
                                                     "[Hora entrada]      TIME(7) NULL," +
                                                     "[Hora entrada real] TIME(7) NULL," +
@@ -94,10 +94,36 @@ namespace CampanillasControlPrototype
                 conn.Open();
                 
                 //OJITO, ESTO NO ESTÁ ACABADO, ESTO ESTÁ ASI PORQUE NO PUEDO PROBARLO EN EL PORTATIL
-                SqlCommand command = new SqlCommand("INSERT INTO Profesor_"+pteacherid+" (Columna1,Columna2,Columna3,Columna4) VALUES ('"+pteacherid+"','" + pclockintime+"','"+pactualtime+"','" + delay+"')", conn);
+                SqlCommand command = new SqlCommand("INSERT INTO Profesor_"+pteacherid+ " (Fecha,\"Hora entrada\",\"Hora entrada real\",\"Minutos Retraso\") VALUES (convert(datetime,'"+ DateTime.Now.ToShortDateString() + "',105),'" + pclockintime.ToString("HH:mm")+"','"+pactualtime.ToString("HH:mm")+ "'," + delay.Minutes+")", conn);
 
                 command.ExecuteNonQuery();
             }
+        }
+
+        public string getTeacherSchedule(int pteacherid,int pintday)
+        {      
+
+            string hoursToCheckIn = "";
+
+            //With this SQL process, we obtain the entrance time for the teacher specified by pteacherid.
+            using (SqlConnection conn = new SqlConnection())
+            {
+                conn.ConnectionString = fullConnectionString;
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("SELECT * FROM Horarios WHERE id='" + pteacherid + "'", conn);
+
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        hoursToCheckIn = (string)reader[pintday];
+                    }
+                }
+            }
+
+            return hoursToCheckIn;
         }
 
         /*public void registerClockIn(int pteacherid)

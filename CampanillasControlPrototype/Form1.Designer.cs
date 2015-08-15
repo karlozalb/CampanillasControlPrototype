@@ -32,6 +32,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.leftSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.personalListBox = new System.Windows.Forms.ListBox();
             this.timeLabel = new System.Windows.Forms.Label();
             this.rightSplitContainer = new System.Windows.Forms.SplitContainer();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
@@ -84,11 +85,25 @@
             // 
             // leftSplitContainer.Panel1
             // 
+            this.leftSplitContainer.Panel1.Controls.Add(this.personalListBox);
             this.leftSplitContainer.Panel1.Controls.Add(this.timeLabel);
             this.leftSplitContainer.Size = new System.Drawing.Size(402, 530);
             this.leftSplitContainer.SplitterDistance = 259;
             this.leftSplitContainer.SplitterWidth = 16;
             this.leftSplitContainer.TabIndex = 0;
+            // 
+            // personalListBox
+            // 
+            this.personalListBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.personalListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.personalListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.personalListBox.FormattingEnabled = true;
+            this.personalListBox.ItemHeight = 25;
+            this.personalListBox.Location = new System.Drawing.Point(20, 43);
+            this.personalListBox.Name = "personalListBox";
+            this.personalListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.personalListBox.Size = new System.Drawing.Size(361, 200);
+            this.personalListBox.TabIndex = 1;
             // 
             // timeLabel
             // 
@@ -152,6 +167,7 @@
         private System.Windows.Forms.SplitContainer rightSplitContainer;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Timer dateTimer;
+        private System.Windows.Forms.ListBox personalListBox;
     }
 }
 

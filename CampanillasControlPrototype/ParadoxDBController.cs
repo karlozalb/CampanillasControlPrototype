@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace CampanillasControlPrototype
     class ParadoxDBController
     {     
         //Connection instance.
-        private OleDbConnection mConnection;
+        private OleDbConnection mConnection;         
 
         //DATABASE CONNECTION STRING
         const string mConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=Paradox 7.x;Data Source=G:\SystemPin\PresenciaPin\db;";
@@ -23,7 +24,7 @@ namespace CampanillasControlPrototype
         public ParadoxDBController()
         {
             mConnection = new OleDbConnection(mConnectionString);
-            getCheckIns(879,21,7,2015);
+            //getCheckIns(879,21,7,2015);
         }
 
         /// <summary>
@@ -94,15 +95,49 @@ namespace CampanillasControlPrototype
         /// <returns></returns>
         public DataTable selectCommand(String pquery)
         {
-            OleDbCommand cmd = new OleDbCommand(pquery, mConnection);
+            Debug.WriteLine("Consulta: "+ pquery);
 
-            mConnection.Open();
-            OleDbDataAdapter adap = new OleDbDataAdapter(cmd);
+
             DataTable dt = new DataTable();
-            adap.Fill(dt);
-            mConnection.Close();
+
+            using (OleDbConnection conn = new OleDbConnection())
+            {
+                conn.ConnectionString = mConnectionString;
+                conn.Open();
+
+                OleDbCommand cmd = new OleDbCommand(pquery, conn);
+
+                OleDbDataAdapter adap = new OleDbDataAdapter(cmd);
+               
+                adap.Fill(dt);
+            }    
 
             return dt;
-        }       
+        }      
+        
+        public void insertTestData()
+        {
+            string date = DateTime.Now.ToShortDateString();
+            string time = DateTime.Now.ToShortTimeString();
+
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (888,'"+ date + "','07:58',1,true,0);" , mConnection);
+
+            OleDbCommand cmd2 = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (889,'" + date + "','08:40',1,true,0);", mConnection);
+
+            OleDbCommand cmd3 = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (890,'" + date + "','07:58',1,true,0);", mConnection);
+            OleDbCommand cmd31 = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (890,'" + date + "','09:20',1,true,0);", mConnection);
+            OleDbCommand cmd32 = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (890,'" + date + "','10:15',1,true,0);", mConnection);
+
+            OleDbCommand cmd4 = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (891,'" + date + "','10:20',1,true,0);", mConnection);
+
+            mConnection.Open();
+            cmd.ExecuteNonQuery();
+            cmd2.ExecuteNonQuery();
+            cmd3.ExecuteNonQuery();
+            cmd31.ExecuteNonQuery();
+            cmd32.ExecuteNonQuery();
+            cmd4.ExecuteNonQuery();
+            mConnection.Close();
+        } 
     }
 }

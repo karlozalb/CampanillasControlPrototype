@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Timers;
+using SimpleThreadSafeCall;
 
 namespace CampanillasControlPrototype
 {
@@ -18,8 +18,21 @@ namespace CampanillasControlPrototype
 
         private int MINUTES_THRESHOLD = 10; //If the same person clock in in less than THRESHOLD, the system ignores it.
 
-        public MainController()
+        private int CURRENT_INT_HOUR = 0;
+        private int CURRENT_INT_DAY = 0;
+
+        private Timer mTaskTimer;
+
+        private MainWindow mMainWindow;
+
+        public MainController(MainWindow pmainwindow)
         {
+            mMainWindow = pmainwindow;
+
+            UtilsHelper.resetHours();
+
+            updateDay();
+
             mDBController = new DataBaseController();
 
             mPersonal = new List<PersonalNode>();
@@ -28,11 +41,19 @@ namespace CampanillasControlPrototype
             mPXDBController.getAllTeachers(mPersonal);
             mDBController.createTeachersTables(mPersonal);
 
+            setPersonalTodayHours();  
+
             currentYear = DateTime.Now.Year;
             currentMonth = DateTime.Now.Month;
             currentDay = DateTime.Now.Day;
 
-            startTask();
+            mTaskTimer = new Timer(2000);
+
+            mTaskTimer.Elapsed += new ElapsedEventHandler(startTask);
+            mTaskTimer.Enabled = true; // Enable it
+
+            //mPXDBController.insertTestData();
+            //startTask(null,null);
         }
 
         /*
@@ -49,8 +70,12 @@ namespace CampanillasControlPrototype
         * luego vuelva a fichar al volver, etc. Es decir, tengo que tener en cuenta fichajes pares e impares.
         */
 
-        public void startTask()
+        public void startTask(object sender, ElapsedEventArgs e)
         {
+            CURRENT_INT_HOUR = UtilsHelper.getCurrentIntHour(DateTime.Now);
+
+            Debug.WriteLine("Hora int actual: "+ CURRENT_INT_HOUR);
+
             int personalSize = mPersonal.Count;
 
             //Get this present day
@@ -65,30 +90,92 @@ namespace CampanillasControlPrototype
                 currentMonth = DateTime.Now.Month;
                 currentDay = DateTime.Now.Day;
 
-                for (int i = 0; i < personalSize; i++) mPersonal[i].clearCheckins();               
+                UtilsHelper.resetHours();
+
+                updateDay();
+
+                for (int i = 0; i < personalSize; i++) mPersonal[i].clearCheckins();
+
+                setPersonalTodayHours();
             }
 
             for (int i=0;i<personalSize;i++)
             {
+                Debug.WriteLine("Checkeando persona: "+ mPersonal[i].getName());
+
                 //We get the clock-ins from the DB
                 List<DateTime> times = mPXDBController.getCheckIns(mPersonal[i].getId(),currentDay,currentMonth,currentYear);
 
+                Debug.WriteLine("Checkeando clock-ins...");
                 //For each clock in, we add it to the worker's clock in list.
-                foreach(DateTime checkInTime in times)
+                foreach (DateTime checkInTime in times)
                 {
                     if (mPersonal[i].addClockIn(checkInTime,MINUTES_THRESHOLD))
                     {
                         PersonalNode.HourNode personNewClockInTime = mPersonal[i].getLastModifiedHourNode();
-                        //We store the data in the teacher's specific table, providing the delay time (even if it's negative). 
-                        mDBController.registerClockIn(mPersonal[i].getId(), personNewClockInTime.mClockInTime, personNewClockInTime.mActualHour, personNewClockInTime.mDelay);
+
+                        if (personNewClockInTime != null)
+                        {
+                            Debug.WriteLine("Añadido nuevo marcaje de " + mPersonal[i].getId() + " en " + personNewClockInTime.mClockInTime);
+
+                            //We store the data in the teacher's specific table, providing the delay time (even if it's negative). 
+                            mDBController.registerClockIn(mPersonal[i].getId(), personNewClockInTime.mClockInTime, personNewClockInTime.mActualHour, personNewClockInTime.mDelay);
+
+                            if (mPersonal[i].getMissingMessage() != null)
+                            {
+                                removeItemFromGUIList(mPersonal[i].getMissingMessage());
+                                mPersonal[i].clearMissingMessage();
+                            }
+                        }
+                    }                   
+                }
+
+                PersonalNode.HourNode currentHourHourNode = mPersonal[i].getHourNodeByInt(CURRENT_INT_HOUR);
+
+                if (currentHourHourNode != null && !currentHourHourNode.mAlreadyChecked)
+                {
+                    //Person missing, notify the GUI.
+                    Debug.WriteLine(mPersonal[i].getName()+" no está en aula.");
+
+                    if (mPersonal[i].getMissingMessage() == null)
+                    {
+
+                        mPersonal[i].addMissingMessage(mPersonal[i].getName() + " no está en aula.");
+                        addItemToGUIList(mPersonal[i].getMissingMessage());
                     }
                 }
+
             }
         }
 
         public bool hasDayChanged()
         {
             return !(currentYear == DateTime.Now.Year && currentMonth == DateTime.Now.Month && currentDay == DateTime.Now.Day);
+        }
+
+        public void updateDay()
+        {
+            CURRENT_INT_DAY = UtilsHelper.getCurrentDay(DateTime.Now.DayOfWeek);
+        }
+
+        public void setPersonalTodayHours()
+        {
+            
+            for (int i = 0; i < mPersonal.Count; i++)
+            {
+                mPersonal[i].clearHours();
+                mPersonal[i].addHours(mDBController.getTeacherSchedule(mPersonal[i].getId(),CURRENT_INT_DAY));
+            }
+        }
+
+        public void addItemToGUIList(PersonalNode.MissingMessage pmessage)
+        {
+            mMainWindow.getPersonalListBox().SafeInvoke(d => d.Items.Add(pmessage));
+        }
+
+        public void removeItemFromGUIList(PersonalNode.MissingMessage pmessage)
+        {
+            mMainWindow.getPersonalListBox().SafeInvoke(d => d.Items.Remove(pmessage));
         }
     }
 }

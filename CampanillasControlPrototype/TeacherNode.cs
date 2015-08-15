@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CampanillasControlPrototype
 {
-    class PersonalNode
+    public class PersonalNode
     {
         private int ID;
         private string NAME;
         private List<DateTime> checkIns;
         private List<HourNode> todaysHours;
         HourNode mLastModifiedHourNode;
+        public MissingMessage mThisPersonMissingMessage;
 
         public PersonalNode(int pid,string pname)
         {
@@ -63,6 +62,8 @@ namespace CampanillasControlPrototype
         public void addHours(string phours)
         {
             //String to int conversion of class' hours.
+            if (phours.Contains('-') || phours.Length == 0) return;
+
             string[] splittedHours = phours.Split(',');
             int[] intHours = new int[splittedHours.Length];
 
@@ -134,6 +135,34 @@ namespace CampanillasControlPrototype
             return mLastModifiedHourNode;
         }
 
+        public HourNode getHourNodeByInt(int pinthour)
+        {
+            for (int i = 0; i < todaysHours.Count; i++)
+            {
+                if (todaysHours[i].mHour == pinthour)
+                {
+                    return todaysHours[i];
+                }
+            }
+
+            return null;
+        }
+
+        public void clearMissingMessage()
+        {
+            mThisPersonMissingMessage = null;
+        }
+
+        public void addMissingMessage(string pmessage)
+        {
+            mThisPersonMissingMessage = new MissingMessage(pmessage);
+        }
+
+        public MissingMessage getMissingMessage()
+        {
+            return mThisPersonMissingMessage;
+        }
+
         public class HourNode
         {
             public int mHour; // 1 to 6 format time when the person should have arrived. 
@@ -141,6 +170,7 @@ namespace CampanillasControlPrototype
             public DateTime mActualHour; // ACTUAL Time when the person should have arrived.
             public DateTime mClockInTime; // Exact time when the person arrived.
             public TimeSpan mDelay; // mClockInTime - mActualHour
+
 
             public HourNode(int hour)
             {
@@ -154,6 +184,21 @@ namespace CampanillasControlPrototype
             {
                 mClockInTime = pclockin;
                 mDelay = pclockin - mActualHour;
+            }           
+        }
+
+        public class MissingMessage
+        {
+            public string missingString;
+
+            public MissingMessage(string pmessage)
+            {
+                missingString = pmessage;
+            }
+
+            public override string ToString()
+            {
+                return missingString;
             }
         }
     }

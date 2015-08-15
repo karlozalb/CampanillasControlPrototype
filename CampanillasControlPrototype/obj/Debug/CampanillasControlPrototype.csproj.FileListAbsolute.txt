@@ -11,21 +11,6 @@ f:\documents\visual studio 2015\Projects\CampanillasControlPrototype\Campanillas
 f:\documents\visual studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\SampleDB_log.ldf
 f:\documents\visual studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.MainWindow.resources
 f:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csprojResolveAssemblyReference.cache
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.exe.config
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.exe
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.pdb
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Database1.mdf
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Database1_log.ldf
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.exe
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.pdb
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csprojResolveAssemblyReference.cache
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.MainWindow.resources
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.Properties.Resources.resources
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csproj.GenerateResource.Cache
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB.mdf
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB_log.ldf
 C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.exe.config
 C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.exe
 C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.pdb
@@ -40,3 +25,18 @@ C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlP
 C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.MainWindow.resources
 C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.Properties.Resources.resources
 C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.MainWindow.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.Properties.Resources.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Database1.mdf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Database1_log.ldf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB.mdf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\ControlDB_log.ldf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.exe.config
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\CampanillasControlPrototype.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasControlPrototype\obj\Debug\CampanillasControlPrototype.csprojResolveAssemblyReference.cache
