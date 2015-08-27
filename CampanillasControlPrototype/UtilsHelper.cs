@@ -49,6 +49,32 @@ namespace CampanillasControlPrototype
             return intToday;
         }
 
+        public static string getPrettyCurrentDay(DayOfWeek ptoday)
+        {
+            string stringToday = "";
+
+            switch (ptoday)
+            {
+                case DayOfWeek.Monday:
+                    stringToday = "Lunes";
+                    break;
+                case DayOfWeek.Tuesday:
+                    stringToday = "Martes";
+                    break;
+                case DayOfWeek.Wednesday:
+                    stringToday = "Miércoles";
+                    break;
+                case DayOfWeek.Thursday:
+                    stringToday = "Jueves";
+                    break;
+                case DayOfWeek.Friday:
+                    stringToday = "Viernes";
+                    break;
+            }
+
+            return stringToday;
+        }
+
         /// <summary>
         /// Returns true if the current system time is less than the worker entrance's time.
         /// </summary>
@@ -85,6 +111,27 @@ namespace CampanillasControlPrototype
             }
 
             return FINISH_HOUR;
+        }
+
+        public static string getPrettyCurrentHour(int ptime)
+        {
+            switch (ptime)
+            {
+                case 1: //First class' time
+                    return "Primera hora";
+                case 2: //Second class' time
+                    return "Segunda hora";
+                case 3: //Third class' time
+                    return "Tercera hora";
+                case 4: //First class' time
+                    return "Cuarta hora";
+                case 5: //First class' time
+                    return "Quinta hora";
+                case 6: //First class' time
+                    return "Sexta hora";
+            }
+
+            return "Hora no lectiva";
         }
 
         public static void resetHours()

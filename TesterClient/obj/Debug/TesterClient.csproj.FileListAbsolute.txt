@@ -1,0 +1,12 @@
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Debug\TesterClient.exe.config
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Debug\TesterClient.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Debug\TesterClient.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Debug\CommsModule.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Debug\CommsModule.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\TesterClient.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\TesterClient.ReportGenerator.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\TesterClient.Login_Dialog_Form1.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\TesterClient.Properties.Resources.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\TesterClient.csproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\TesterClient.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\TesterClient.pdb

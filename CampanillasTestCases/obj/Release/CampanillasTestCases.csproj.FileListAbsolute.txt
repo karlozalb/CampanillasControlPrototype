@@ -1,0 +1,16 @@
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\Database1.mdf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\Database1_log.ldf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\ControlDB.mdf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\ControlDB_log.ldf
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\estructura.mdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\CampanillasTestCases.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\CampanillasTestCases.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\CampanillasControlPrototype.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\CommsModule.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\CampanillasControlPrototype.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\CommsModule.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Release\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Release\CampanillasTestCases.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Release\CampanillasTestCases.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Release\CampanillasTestCases.pdb

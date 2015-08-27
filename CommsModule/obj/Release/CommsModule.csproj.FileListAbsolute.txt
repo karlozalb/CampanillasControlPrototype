@@ -1,0 +1,5 @@
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\bin\Release\CommsModule.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\bin\Release\CommsModule.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\obj\Release\CommsModule.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\obj\Release\CommsModule.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\obj\Release\CommsModule.csprojResolveAssemblyReference.cache

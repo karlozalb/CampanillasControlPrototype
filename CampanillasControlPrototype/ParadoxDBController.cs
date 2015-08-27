@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace CampanillasControlPrototype
 {
@@ -19,12 +21,20 @@ namespace CampanillasControlPrototype
         private OleDbConnection mConnection;         
 
         //DATABASE CONNECTION STRING
-        const string mConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=Paradox 7.x;Data Source=G:\SystemPin\PresenciaPin\db;";
+        string mConnectionString = "";
 
         public ParadoxDBController()
         {
+            getSystemPinPathDB();
+
             mConnection = new OleDbConnection(mConnectionString);
             //getCheckIns(879,21,7,2015);
+        }
+
+        void getSystemPinPathDB()
+        {
+            string mySetting = ConfigurationManager.AppSettings["systempindbfolder"];
+            mConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=Paradox 7.x;Data Source=" + mySetting + ";";            
         }
 
         /// <summary>
@@ -86,7 +96,7 @@ namespace CampanillasControlPrototype
             {
                 ppersonal.Add(new PersonalNode((int)row["Id"],row["Nombre"].ToString()));
             }
-        }
+        }        
 
         /// <summary>
         /// Generic method to execute SELECT SQL commands.
@@ -95,7 +105,7 @@ namespace CampanillasControlPrototype
         /// <returns></returns>
         public DataTable selectCommand(String pquery)
         {
-            Debug.WriteLine("Consulta: "+ pquery);
+            //Debug.WriteLine("Consulta: "+ pquery);
 
 
             DataTable dt = new DataTable();

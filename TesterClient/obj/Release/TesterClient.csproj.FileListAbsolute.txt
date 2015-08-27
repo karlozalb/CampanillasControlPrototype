@@ -1,0 +1,11 @@
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Release\TesterClient.exe.config
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Release\TesterClient.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Release\TesterClient.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Release\CommsModule.dll
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Release\CommsModule.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Release\TesterClient.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Release\TesterClient.Form1.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Release\TesterClient.Properties.Resources.resources
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Release\TesterClient.csproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Release\TesterClient.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Release\TesterClient.pdb

@@ -11,7 +11,7 @@ namespace CampanillasControlPrototype
         private List<DateTime> checkIns;
         private List<HourNode> todaysHours;
         HourNode mLastModifiedHourNode;
-        public MissingMessage mThisPersonMissingMessage;
+        public MissingMessage mThisPersonMissingMessage, mThisPersonAccumulatedAbsenceMessage;
 
         public PersonalNode(int pid,string pname)
         {
@@ -73,6 +73,11 @@ namespace CampanillasControlPrototype
             }
         }
 
+        public void addHour(int phour)
+        {
+            todaysHours.Add(new HourNode(phour));
+        }
+
         public void registerClockIn(DateTime pdate)
         {
             mLastModifiedHourNode = null;
@@ -99,6 +104,41 @@ namespace CampanillasControlPrototype
                 }
             }
         }
+
+        public bool hasAccummulatedAbsence(int pcurrenthour)        {
+
+            if (pcurrenthour <= 1) return false;
+
+            int index = 0;
+
+            //Si la hora anterior el profesor no está, o no ha estado en ninguna de las horas anteriores... chungo.
+
+            for (int i = 0; i < todaysHours.Count; i++)
+            {
+                if (todaysHours[i].mHour == pcurrenthour)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index > 0 && !todaysHours[index - 1].mAlreadyChecked || notPresentInEarlyHours(pcurrenthour);           
+        }
+
+        private bool notPresentInEarlyHours(int pcurrenthour)
+        {
+            if (todaysHours.Count > 0 && todaysHours[0].mHour == pcurrenthour) return false;
+
+            for (int i = 0; i < todaysHours.Count; i++)
+            {
+                if (todaysHours[i].mHour < pcurrenthour && todaysHours[i].mAlreadyChecked)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }      
 
         public void registerClockOut(DateTime pdate)
         {
@@ -161,6 +201,26 @@ namespace CampanillasControlPrototype
         public MissingMessage getMissingMessage()
         {
             return mThisPersonMissingMessage;
+        }
+
+        public void clearAccumulatedAbsenceMessage()
+        {
+            mThisPersonAccumulatedAbsenceMessage = null;
+        }
+
+        public void addAccumulatedAbsenceMessage(string pmessage)
+        {
+            mThisPersonAccumulatedAbsenceMessage = new MissingMessage(pmessage);
+        }
+
+        public MissingMessage getAccumulatedAbsenceMessage()
+        {
+            return mThisPersonAccumulatedAbsenceMessage;
+        }        
+
+        public override string ToString()
+        {
+            return ID + " - " + NAME;
         }
 
         public class HourNode
