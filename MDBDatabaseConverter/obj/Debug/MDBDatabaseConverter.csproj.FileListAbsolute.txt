@@ -1,6 +1,5 @@
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\bin\Debug\MDBDatabaseConverter.exe.config
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\bin\Debug\MDBDatabaseConverter.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\bin\Debug\MDBDatabaseConverter.pdb
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\obj\Debug\MDBDatabaseConverter.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\obj\Debug\MDBDatabaseConverter.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\obj\Debug\MDBDatabaseConverter.pdb

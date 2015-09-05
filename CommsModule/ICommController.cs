@@ -11,6 +11,9 @@ namespace CommsModule
 
         SerializableTeacherData getTeacherInfo(int pteacherid,DateTime pinit,DateTime pend);
         SerializableTeacherList getTeachersList();
-        
+        void addNewAd(SerializableAd pnewad);
+        SerializableAdList getAdList();
+        void deleteAd(SerializableDeleteAd messageReceived);
+        SerializableMissingTeachersList getMissingTeachers(SerializableGetMissingTeachersMessage messageReceived);
     }
 }

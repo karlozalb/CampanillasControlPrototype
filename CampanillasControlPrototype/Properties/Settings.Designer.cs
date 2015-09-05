@@ -25,7 +25,7 @@ namespace CampanillasControlPrototype.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("402")]
+        [global::System.Configuration.DefaultSettingValueAttribute("482")]
         public int MainSplitSplitter {
             get {
                 return ((int)(this["MainSplitSplitter"]));
@@ -38,11 +38,23 @@ namespace CampanillasControlPrototype.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\ControlDB.mdf" +
-            ";Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DB\\ControlDB." +
+            "mdf;Integrated Security=True")]
         public string SampleDBConnectionString {
             get {
                 return ((string)(this["SampleDBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("09/03/2015 23:58:00")]
+        public global::System.DateTime LastCheckedDate {
+            get {
+                return ((global::System.DateTime)(this["LastCheckedDate"]));
+            }
+            set {
+                this["LastCheckedDate"] = value;
             }
         }
     }

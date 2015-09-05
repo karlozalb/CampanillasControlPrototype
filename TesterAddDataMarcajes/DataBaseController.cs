@@ -13,7 +13,7 @@ namespace CampanillasControlPrototype
     {
         private SqlConnection myConnection;
 
-        private const string DB_PATH = "D:\\Documents\\Visual Studio 2015\\Projects\\CampanillasControlPrototype\\CampanillasControlPrototype\\";
+        private const string DB_PATH = "D:\\Documents\\Visual Studio 2015\\Projects\\CampanillasControlPrototype\\CampanillasControlPrototype\\DB\\";
         private const string DB_NAME = "ControlDB.mdf";
 
         private string fullConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\""+DB_PATH+DB_NAME+"\";Integrated Security=True";

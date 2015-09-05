@@ -60,7 +60,7 @@ namespace CommsModule
 
             public override string ToString()
             {
-                return mTeacherName;
+                return mId + "-" + mTeacherName;
             }
         }
     }

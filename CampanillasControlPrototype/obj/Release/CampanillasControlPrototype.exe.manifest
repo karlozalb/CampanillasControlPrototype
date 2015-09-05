@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CampanillasControlPrototype.exe" size="36328">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CampanillasControlPrototype.exe" size="44008">
       <assemblyIdentity name="CampanillasControlPrototype" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eLCAja8ya7fjKST3+6Ex8CHyRDwLfr9E095uDZMxXFk=</dsig:DigestValue>
+        <dsig:DigestValue>+ThNM2KdTKXMkXEMJ+8RFDIhPKD23X9M0W19RIlBwAQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="13312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="14336">
       <assemblyIdentity name="CommsModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vJ2HpWHEMiXWfEo9It2qyrezN1iNiuqHIv4Dud85BFU=</dsig:DigestValue>
+        <dsig:DigestValue>dmRgo0fryGrknDft8rsG4FshBS8owyPUW5kW6TDu01M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -95,7 +95,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2gVZZmULUHvljfqa6+kxZ8LGVC8x6heOV7CZt5Aigyg=</dsig:DigestValue>
+      <dsig:DigestValue>scTMVq8LMAcdhxuZLo2AbkgLKll3QMCKinZw7QF7UZY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ControlDB.mdf" size="3276800" writeableType="applicationData">
@@ -104,16 +104,16 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>p8ERfJ9bPolFv8xmh4yZq6xBLB6z08cwM78wzsO5re4=</dsig:DigestValue>
+      <dsig:DigestValue>ADipyaCqQajKzuD9754uUeSC2QvYT/rPmFP8cEtTmlA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ControlDB_log.ldf" size="851968" writeableType="applicationData">
+  <file name="ControlDB_log.ldf" size="573440" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mtAw2Q8xH/X/JjKFW6oAvhgeWpKKz6EzyQGKQ1U8+JE=</dsig:DigestValue>
+      <dsig:DigestValue>xtY3MlEggOas2Xh854XWcw//82jeDIp8AEyuSSmThj0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Database1.mdf" size="2293760" writeableType="applicationData">
@@ -140,7 +140,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>o3SWiOpLmh2xk2vfkoSKZoZoT+8P9fkjdwP44CAHczQ=</dsig:DigestValue>
+      <dsig:DigestValue>m5aYQQ1A9bNBUY1khOqRYpcyEji1ZfBLVZc1ha+R3ck=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

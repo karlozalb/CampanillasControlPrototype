@@ -15,8 +15,8 @@ namespace CommsModule
     public class Client
     {
         //static readonly IPAddress serverIP = IPAddress.Loopback;
-        const int serverPort = 2500;
-        const int serverUDPPort = 2501;
+        private int mServerPort = 2500;
+        const int serverUDPPort = 2501; //Legacy
         IPAddress mServerIp;
 
         static ManualResetEvent connectDone = new ManualResetEvent(false);
@@ -26,43 +26,66 @@ namespace CommsModule
 
         ICommClientController mClientController;
 
-        public Client(ICommClientController pclientcontroller)
+        private int MAX_RETRIES = 10;
+        private int currentRetries;
+
+        public Client(ICommClientController pclientcontroller,string pserverip,int pserverport)
         {
+            mServerIp = IPAddress.Parse(pserverip);
+            mServerPort = pserverport;
             mClientController = pclientcontroller;
             mDataSerializer = new DataSerializer();
         }
 
 
-        public void SendMessageAsync(Object pmessage)
+        public bool SendMessageAsyncForResponse(Object pmessage)
         {
             if (mServerIp != null)
             {
                 // Initiate connecting to the server
                 Socket connection = Connect();
 
-                // block this thread until we have connected
-                // normally your program would just continue doing other work
-                // but we've got nothing to do :)
-                connectDone.WaitOne();
-                Console.Out.WriteLine("Connected to server");
+                if (connection != null)
+                {
+                    // block this thread until we have connected
+                    // normally your program would just continue doing other work
+                    // but we've got nothing to do :)
+                    connectDone.WaitOne();
+                    Console.Out.WriteLine("Connected to server");
 
-                // Start sending the data
-                SendData(connection, pmessage);
-                sendDone.WaitOne();
-                Console.Out.WriteLine("Message successfully sent");
+                    // Start sending the data
+                    SendData(connection, pmessage);
+                    sendDone.WaitOne();
+                    Console.Out.WriteLine("Message successfully sent");
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-        }
+            else
+            {
+                return false;
+            }
+        }        
 
         Socket Connect()
         {
             try
             {
-                IPEndPoint serverAddress = new IPEndPoint(mServerIp, serverPort);
+                IPEndPoint serverAddress = new IPEndPoint(mServerIp, mServerPort);
                 Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                client.BeginConnect(serverAddress, new AsyncCallback(ConnectCallback), client);
+                IAsyncResult result = client.BeginConnect(serverAddress, new AsyncCallback(ConnectCallback), client);
 
-                return client;
+                bool success = result.AsyncWaitHandle.WaitOne(5000, true);
+
+                if (success) {
+                    return client;
+                } else {
+                    client.Close(); return null;
+                }
             }
             catch (Exception e)
             {
@@ -77,52 +100,57 @@ namespace CommsModule
             string hostname = System.Net.Dns.GetHostName();
             IPHostEntry allLocalNetworkAddresses = Dns.Resolve(hostname);
 
-            foreach (IPAddress ip in allLocalNetworkAddresses.AddressList)
+            for (int i = 0; i < MAX_RETRIES; i++)
             {
-                Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
-
-                //Bind on port 0. The OS will give some port between 1025 and 5000.
-                client.Bind(new IPEndPoint(ip, 0));
-
-                //Create endpoint, broadcast.
-                IPEndPoint AllEndPoint = new IPEndPoint(IPAddress.Broadcast, serverUDPPort);
-
-                //Allow sending broadcast messages
-                client.SetSocketOption(SocketOptionLevel.Socket,SocketOptionName.Broadcast, 1);
-
-                //Send message to everyone on this network
-                client.SendTo(new byte[] { 1 }, AllEndPoint);
-
-                Console.Write("Client send '1' to " + AllEndPoint.ToString() + Environment.NewLine);
-
-                try
+                foreach (IPAddress ip in allLocalNetworkAddresses.AddressList)
                 {
-                    //Create object for the server.
-                    IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
-                    EndPoint tempRemoteEP = (EndPoint)sender;
-                    byte[] buffer = new byte[1000];
+                    Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 
-                    //Recieve from server. Don't wait more than 3000 milliseconds.
-                    client.SetSocketOption(SocketOptionLevel.Socket,SocketOptionName.ReceiveTimeout, 3000);
 
-                    //Recive message, save wherefrom in tempRemoteIp
-                    client.ReceiveFrom(buffer, ref tempRemoteEP);
-                    Console.Write("Client got '" + buffer[0] + "' from " +
-                    tempRemoteEP.ToString() + Environment.NewLine);
+                    //Bind on port 0. The OS will give some port between 1025 and 5000.
+                    client.Bind(new IPEndPoint(ip, 2501));
 
-                    //Get server IP (ugly)
-                    mServerIp = IPAddress.Parse(tempRemoteEP.ToString().Split(":".ToCharArray(), 2)[0]);
+                    //Create endpoint, broadcast.
+                    IPEndPoint AllEndPoint = new IPEndPoint(IPAddress.Broadcast, serverUDPPort);
 
-                    //Don't try any more networkss
-                    break;
+                    //Allow sending broadcast messages
+                    client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, 1);
+
+                    //Send message to everyone on this network
+                    client.SendTo(new byte[] { 1 }, AllEndPoint);
+
+                    Console.Write("Client send '1' to " + AllEndPoint.ToString() + Environment.NewLine);
+
+                    try
+                    {
+                        //Create object for the server.
+                        IPEndPoint sender = new IPEndPoint(IPAddress.Any, 0);
+                        EndPoint tempRemoteEP = (EndPoint)sender;
+                        byte[] buffer = new byte[1000];
+
+                        //Recieve from server. Don't wait more than 3000 milliseconds.
+                        client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 3000);
+
+                        //Recive message, save wherefrom in tempRemoteIp
+                        client.ReceiveFrom(buffer, ref tempRemoteEP);
+                        Console.Write("Client got '" + buffer[0] + "' from " +
+                        tempRemoteEP.ToString() + Environment.NewLine);
+
+                        //Get server IP (ugly)
+                        mServerIp = IPAddress.Parse(tempRemoteEP.ToString().Split(":".ToCharArray(), 2)[0]);
+
+                        //Don't try any more networkss
+                        return true;
+                    }
+                    catch
+                    {
+                        client.Shutdown(SocketShutdown.Both);
+                        client.Close();
+                        Debug.WriteLine("No server answered. Try next network");
+                        //Timout. No server answered. Try next network.
+                    }
                 }
-                catch
-                {
-                    Debug.WriteLine("No server answered. Try next network");
-                    //Timout. No server answered. Try next network.
-                }
-            }
+            }         
 
             return mServerIp != null;
         }
@@ -165,6 +193,17 @@ namespace CommsModule
             }else if (presponse is SerializableTeacherList)
             {
                 mClientController.addTeacherListDataToGUI(((SerializableTeacherList)presponse));
+            }else if (presponse is SerializableGenericOKMessage)
+            {
+                mClientController.showMessage("Operación realizada correctamente.");
+            }
+            else if (presponse is SerializableAdList)
+            {
+                mClientController.deleteAdResponseReceived((SerializableAdList)presponse);
+            }
+            else if (presponse is SerializableMissingTeachersList)
+            {
+                mClientController.missingTeachersListReceived((SerializableMissingTeachersList)presponse);
             }
         }
 

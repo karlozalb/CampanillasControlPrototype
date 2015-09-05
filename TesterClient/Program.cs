@@ -16,7 +16,11 @@ namespace TesterClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReportGenerator());
+            ReportGenerator rg = new ReportGenerator();
+            if (!rg.IsDisposed)
+            {
+                Application.Run(rg);
+            }
         }
     }
 }

@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CampanillasControlPrototype.exe" size="39912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CampanillasControlPrototype.exe" size="52200">
       <assemblyIdentity name="CampanillasControlPrototype" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lCUkB7U04YQifozPpYcLR/EF4KGKRoUYiUlgDUqk9A0=</dsig:DigestValue>
+        <dsig:DigestValue>geBG7F8ycRRMB8KbslVatNO9X9rCcOO537f6bk1/TCg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="14336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="17920">
       <assemblyIdentity name="CommsModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PKZTZympIWEFyXEjscYqV80LotEZcF290fpoGve4UqE=</dsig:DigestValue>
+        <dsig:DigestValue>D4wM5S4DawVVk2/LaZUWhWJQGRt4UndDAtK74ha79Pc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -89,58 +89,40 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="CampanillasControlPrototype.exe.config" size="1488">
+  <file name="CampanillasControlPrototype.exe.config" size="1682">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2gVZZmULUHvljfqa6+kxZ8LGVC8x6heOV7CZt5Aigyg=</dsig:DigestValue>
+      <dsig:DigestValue>kqpqj55LDCseS29krE6NOnRhNRXEYoAwOTk38NQe8Y8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ControlDB.mdf" size="3276800" writeableType="applicationData">
+  <file name="DB\ControlDB.mdf" size="3276800" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>p8ERfJ9bPolFv8xmh4yZq6xBLB6z08cwM78wzsO5re4=</dsig:DigestValue>
+      <dsig:DigestValue>Bhu2qnxiTQAWBCCZAGlXhU7Bj16qMUogd0drmHXb0iU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ControlDB_log.ldf" size="851968" writeableType="applicationData">
+  <file name="DB\ControlDB_log.ldf" size="851968" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>mtAw2Q8xH/X/JjKFW6oAvhgeWpKKz6EzyQGKQ1U8+JE=</dsig:DigestValue>
+      <dsig:DigestValue>qt+bEfpZcvWoCpsfczyGMo3ar40icynuUT/v5RynS7Y=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Database1.mdf" size="2293760" writeableType="applicationData">
+  <file name="DB\estructura.mdb" size="4182016" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>n5UtZhU0IxKwETj0vTZe+91ED7BP62fEGLZIfkK+MsU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Database1_log.ldf" size="573440" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>UesSO7GkunlBhXBCAZgSXpcFpPMRfHXsFI26dn/MZYk=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="estructura.mdb" size="3567616" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>o3SWiOpLmh2xk2vfkoSKZoZoT+8P9fkjdwP44CAHczQ=</dsig:DigestValue>
+      <dsig:DigestValue>zbTuLWlUlnT8DD/2AYVQ94EC9qdH4SGsDjcB/Ry67OA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

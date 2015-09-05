@@ -42,38 +42,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CampanillasControlPrototype.exe" size="37376">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CampanillasControlPrototype.exe" size="51200">
       <assemblyIdentity name="CampanillasControlPrototype" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>A0LxVftJHDt1TENxDBLGZqpdtnX8QWqB+J7T2tt0omw=</dsig:DigestValue>
+        <dsig:DigestValue>UtuxrJIRsuGGAfp4LyCOKGF4TZrpN6ehqqsWSiS1Xms=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="14336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="17920">
       <assemblyIdentity name="CommsModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2MdJRHW1QPFJRADiJ+J0R/7D/JI6gDGPcvUZSQaZp+c=</dsig:DigestValue>
+        <dsig:DigestValue>D4wM5S4DawVVk2/LaZUWhWJQGRt4UndDAtK74ha79Pc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TesterAddDataMarcajes.exe" size="17384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TesterAddDataMarcajes.exe" size="17896">
       <assemblyIdentity name="TesterAddDataMarcajes" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IpJNB+V8vdjk1GuClfoKOwGyNDM+4i/L3M2TwhpGbaM=</dsig:DigestValue>
+        <dsig:DigestValue>v2/t0bYhknqcfZOxg3w1CnAwVcCZgJJWy++y4Zy7e88=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

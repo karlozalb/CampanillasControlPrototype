@@ -19,7 +19,7 @@ namespace CommsModule
 
         }
 
-        public void addData(DateTime pdate,TimeSpan ptime, TimeSpan pactualtime,int pdelayminutes)
+        public void addData(DateTime pdate,TimeSpan ptime, TimeSpan pactualtime,int pdelayminutes,bool pisclockin)
         {
             if (mClockins == null) mClockins = new List<ClockInDataNode>();
 
@@ -29,6 +29,7 @@ namespace CommsModule
             newNode.entranceHour = ptime;
             newNode.day = pdate;
             newNode.delayMinutes = pdelayminutes;
+            newNode.isClockIn = pisclockin;
 
             mClockins.Add(newNode);
         }
@@ -54,6 +55,7 @@ namespace CommsModule
             public DateTime day;
             public TimeSpan entranceHour,actualEntranceHour;
             public int delayMinutes;
+            public bool isClockIn;
 
             public ClockInDataNode()
             {
@@ -67,6 +69,7 @@ namespace CommsModule
                 entranceHour = (TimeSpan)info.GetValue("entranceHour", typeof(TimeSpan));
                 actualEntranceHour = (TimeSpan)info.GetValue("actualEntranceHour", typeof(TimeSpan));
                 delayMinutes = (int)info.GetValue("delayMinutes", typeof(int));
+                isClockIn = (bool)info.GetValue("isClockIn", typeof(bool));
             }
 
             public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -75,6 +78,7 @@ namespace CommsModule
                 info.AddValue("entranceHour", entranceHour);
                 info.AddValue("actualEntranceHour", actualEntranceHour);
                 info.AddValue("delayMinutes", delayMinutes);
+                info.AddValue("isClockIn", isClockIn);
             }
         }
     }

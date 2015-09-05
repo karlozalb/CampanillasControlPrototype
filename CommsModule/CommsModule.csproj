@@ -45,8 +45,15 @@
     <Compile Include="DataSerializer.cs" />
     <Compile Include="ICommClientController.cs" />
     <Compile Include="ICommController.cs" />
+    <Compile Include="SerializableAd.cs" />
+    <Compile Include="SerializableAdList.cs" />
+    <Compile Include="SerializableDeleteAd.cs" />
+    <Compile Include="SerializableGenericOKMessage.cs" />
+    <Compile Include="SerializableGetAdList.cs" />
+    <Compile Include="SerializableGetMissingTeachersMessage.cs" />
     <Compile Include="SerializableGetTeacherDataMessage.cs" />
     <Compile Include="SerializableGetTeachersListDataMessage.cs" />
+    <Compile Include="SerializableMissingTeachersList.cs" />
     <Compile Include="SerializableTeacherData.cs" />
     <Compile Include="SerializableTeacherList.cs" />
     <Compile Include="Server.cs" />

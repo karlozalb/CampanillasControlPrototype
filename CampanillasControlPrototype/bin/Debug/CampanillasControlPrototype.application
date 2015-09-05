@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="CampanillasControlPrototype.exe.manifest" size="7887">
+    <dependentAssembly dependencyType="install" codebase="CampanillasControlPrototype.exe.manifest" size="7041">
       <assemblyIdentity name="CampanillasControlPrototype.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3yfouLjzVj4yjC+fTcEFTB9yjaus0GVaO7I2XhMIR0U=</dsig:DigestValue>
+        <dsig:DigestValue>1dGOYDOnwLtuVg34RHAQ+FH5E5izv6TMqkvGN2Qkj5M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -23,6 +23,8 @@ namespace CampanillasControlPrototype
         {
             showCurrentTime();
 
+            //this.TopMost = true;
+
             mMainController = new MainController(this);
             mCommsController = new CommsController(mMainController);
         }
@@ -78,14 +80,29 @@ namespace CampanillasControlPrototype
             return accummulatedAbsenceListBox;
         }
 
+        private void missingPersonalListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         public Label getDayLabel()
         {
             return dayLabel;
-        }
+        }       
 
         public Label getHourLabel()
         {
             return hourLabel;
+        }
+
+        public Label getAdLabel()
+        {
+            return adText;
+        }
+
+        public Label getAdInfoLabel()
+        {
+            return adInfoText;
         }
 
     }

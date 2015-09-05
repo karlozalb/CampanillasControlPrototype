@@ -143,29 +143,11 @@ namespace CommsModule
 
                         Console.Out.WriteLine("Received message: \n");
 
-                        Object messageReceived = mDataSerializer.deserialize(state.message);    
-                        
-                        if (messageReceived is SerializableGetTeacherDataMessage)
-                        {
-                            SerializableGetTeacherDataMessage msg = (SerializableGetTeacherDataMessage)messageReceived;
-                            SerializableTeacherData tdata = mCommController.getTeacherInfo(msg.teacherID,msg.init,msg.end);
+                        Object messageReceived = mDataSerializer.deserialize(state.message);
 
-                            byte[] response = mDataSerializer.serialize(tdata);
-
-                            sendBackToClient(handler, response);
-                        }else if (messageReceived is SerializableGetTeachersListDataMessage)
-                        {
-                            SerializableGetTeachersListDataMessage msg = (SerializableGetTeachersListDataMessage)messageReceived;
-                            SerializableTeacherList tdata = mCommController.getTeachersList();
-
-                            byte[] response = mDataSerializer.serialize(tdata);
-
-                            sendBackToClient(handler, response);
-                        }else if (messageReceived is SerializableServerDiscoveryDataMessage)
-                        {
-                            sendBackToClient(handler, mDataSerializer.serialize(new SerializableServerDiscoveryDataMessage()));
-                        }             
+                        processMessage(handler,messageReceived);
                     }
+                        
                 }
             }
             catch (Exception e)
@@ -173,6 +155,53 @@ namespace CommsModule
                 Console.WriteLine(e.Message);
             }
         }
+
+        private void processMessage(Socket handler,object messageReceived)
+        {
+            if (messageReceived is SerializableGetTeacherDataMessage)
+            {
+                SerializableGetTeacherDataMessage msg = (SerializableGetTeacherDataMessage)messageReceived;
+                SerializableTeacherData tdata = mCommController.getTeacherInfo(msg.teacherID, msg.init, msg.end);
+
+                byte[] response = mDataSerializer.serialize(tdata);
+
+                sendBackToClient(handler, response);
+            }
+            else if (messageReceived is SerializableGetTeachersListDataMessage)
+            {
+                SerializableGetTeachersListDataMessage msg = (SerializableGetTeachersListDataMessage)messageReceived;
+                SerializableTeacherList tdata = mCommController.getTeachersList();
+
+                byte[] response = mDataSerializer.serialize(tdata);
+
+                sendBackToClient(handler, response);
+            }
+            else if (messageReceived is SerializableServerDiscoveryDataMessage)
+            {
+                sendBackToClient(handler, mDataSerializer.serialize(new SerializableServerDiscoveryDataMessage()));
+            }
+            else if (messageReceived is SerializableAd)
+            {
+                mCommController.addNewAd((SerializableAd)messageReceived);
+                sendBackToClient(handler, mDataSerializer.serialize(new SerializableGenericOKMessage()));
+            }
+            else if (messageReceived is SerializableGetAdList)
+            {
+                SerializableAdList adList = mCommController.getAdList();
+                sendBackToClient(handler, mDataSerializer.serialize(adList));
+            }
+            else if (messageReceived is SerializableDeleteAd)
+            {
+                mCommController.deleteAd((SerializableDeleteAd)messageReceived);
+                sendBackToClient(handler, mDataSerializer.serialize(new SerializableGenericOKMessage()));
+            }
+            else if (messageReceived is SerializableGetMissingTeachersMessage)
+            {
+                SerializableMissingTeachersList teachersList = mCommController.getMissingTeachers((SerializableGetMissingTeachersMessage)messageReceived);
+                sendBackToClient(handler, mDataSerializer.serialize(teachersList));
+            }
+        }
+    
 
         private void SendCallBack(IAsyncResult ar)
         {
