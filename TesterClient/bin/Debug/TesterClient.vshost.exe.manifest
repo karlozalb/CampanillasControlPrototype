@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="17920">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="24064">
       <assemblyIdentity name="CommsModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>D4wM5S4DawVVk2/LaZUWhWJQGRt4UndDAtK74ha79Pc=</dsig:DigestValue>
+        <dsig:DigestValue>8q1LTfHpYuZYrMWqQwdhAo8Rbs42ulJHh4ZKk7k/z0E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TesterClient.exe" size="36328">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TesterClient.exe" size="97256">
       <assemblyIdentity name="TesterClient" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>s4c4ll2zcqLuZW1+ZiAFV/vihCwqigHvAZawMyzO5Zo=</dsig:DigestValue>
+        <dsig:DigestValue>LM7/WWsvoNWatp6xNCUAZ1IFMjhnB/TyhFb1qtoQsXE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

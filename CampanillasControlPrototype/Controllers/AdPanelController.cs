@@ -8,6 +8,7 @@ using System.Timers;
 using System.Configuration;
 using SimpleThreadSafeCall;
 using System.Diagnostics;
+using System.Threading;
 
 namespace CampanillasControlPrototype
 {
@@ -22,7 +23,7 @@ namespace CampanillasControlPrototype
         long AD_TIME;
         int mCurrentAdIndex;
 
-        Timer mTaskTimer;
+        bool mEnabled = true;
 
         public AdPanelController(MainWindow pmainwindow,DataBaseController pdatabasecontroller)
         {
@@ -33,15 +34,29 @@ namespace CampanillasControlPrototype
             mCurrentAdNodeList = new List<CurrentAdNode>();
 
 
-            mTaskTimer = new Timer(AD_TIME);
+            /*mTaskTimer = new Timer(AD_TIME);
 
             mTaskTimer.Elapsed += new ElapsedEventHandler(updateDisplayedAd);
             mTaskTimer.Enabled = true; // Enable it    
 
+            mCurrentAdIndex = 0;*/
+
+            //
+
             mCurrentAdIndex = 0;
 
-            updateAds();
+            Thread mainTaskThread = new Thread(new ThreadStart(taskManagement));
+            mainTaskThread.Start();
+        }
 
+        public void taskManagement()
+        {
+            while (mEnabled)
+            {
+                updateAds();
+                updateDisplayedAd();
+                Thread.Sleep((int)AD_TIME);
+            }
         }
 
         public void updateAds()
@@ -79,9 +94,7 @@ namespace CampanillasControlPrototype
 
             if (updateNeeded)
             {
-                mTaskTimer.Enabled = false;
                 resetAdList(adlist,mCurrentAdNodeList);
-                mTaskTimer.Enabled = true; 
             }
             
         }
@@ -96,7 +109,7 @@ namespace CampanillasControlPrototype
             }
         }
 
-        private void updateDisplayedAd(object sender, ElapsedEventArgs e)
+        private void updateDisplayedAd()
         {
             if (++mCurrentAdIndex > (mCurrentAdNodeList.Count - 1)) mCurrentAdIndex = 0;
 
@@ -110,9 +123,7 @@ namespace CampanillasControlPrototype
 
         public void stopTask()
         {
-            mTaskTimer.Stop();
-            mTaskTimer.Enabled = false;
-            mTaskTimer.Dispose();
+            mEnabled = false;
         }
     }
 

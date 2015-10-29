@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CommsModule</RootNamespace>
     <AssemblyName>CommsModule</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -46,20 +46,35 @@
     <Compile Include="ICommClientController.cs" />
     <Compile Include="ICommController.cs" />
     <Compile Include="SerializableAd.cs" />
+    <Compile Include="SerializableAddDayMessage.cs" />
+    <Compile Include="SerializableAddSubstituteTeacherMessage.cs" />
     <Compile Include="SerializableAdList.cs" />
     <Compile Include="SerializableDeleteAd.cs" />
+    <Compile Include="SerializableDeleteDayMessage.cs" />
+    <Compile Include="SerializableDeleteSubstituteMessage.cs" />
     <Compile Include="SerializableGenericOKMessage.cs" />
     <Compile Include="SerializableGetAdList.cs" />
+    <Compile Include="SerializableGetBadClockInsTeachersListMessage.cs" />
+    <Compile Include="SerializableGetLateClockInsListMessage.cs" />
+    <Compile Include="SerializableGetMissesPerHourMessage.cs" />
     <Compile Include="SerializableGetMissingTeachersMessage.cs" />
+    <Compile Include="SerializableGetNoSchoolDaysMessage.cs" />
+    <Compile Include="SerializableGetSubstituteListMessage.cs" />
     <Compile Include="SerializableGetTeacherDataMessage.cs" />
     <Compile Include="SerializableGetTeachersListDataMessage.cs" />
+    <Compile Include="SerializableLateClockInsList.cs" />
     <Compile Include="SerializableMissingTeachersList.cs" />
+    <Compile Include="SerializableNoSchoolDaysList.cs" />
+    <Compile Include="SerializableSubstitutionList.cs" />
     <Compile Include="SerializableTeacherData.cs" />
+    <Compile Include="SerializableTeacherDataList.cs" />
     <Compile Include="SerializableTeacherList.cs" />
+    <Compile Include="SerializableTeachersMissesPerHourList.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializableServerDiscoveryDataMessage.cs" />
     <Compile Include="ServerUDPDiscoverable.cs" />
+    <Compile Include="SerializableSubstituteTeacherNode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

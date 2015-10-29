@@ -40,35 +40,38 @@ namespace CommsModule
 
         public bool SendMessageAsyncForResponse(Object pmessage)
         {
-            if (mServerIp != null)
+            try
             {
-                // Initiate connecting to the server
-                Socket connection = Connect();
-
-                if (connection != null)
+                if (mServerIp != null)
                 {
-                    // block this thread until we have connected
-                    // normally your program would just continue doing other work
-                    // but we've got nothing to do :)
-                    connectDone.WaitOne();
-                    Console.Out.WriteLine("Connected to server");
-
-                    // Start sending the data
-                    SendData(connection, pmessage);
-                    sendDone.WaitOne();
-                    Console.Out.WriteLine("Message successfully sent");
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    // Initiate connecting to the server
+                    Socket connection = Connect();
+                    if (connection != null && connection.Connected)
+                    {
+                        // block this thread until we have connected
+                        // normally your program would just continue doing other work
+                        // but we've got nothing to do :)
+                        if (connectDone.WaitOne(new TimeSpan(0, 0, 3)))
+                        {
+                            Console.Out.WriteLine("Conectado al servidor.");
+                            // Start sending the data
+                            SendData(connection, pmessage);
+                            if (sendDone.WaitOne(new TimeSpan(0, 0, 3)))
+                            {
+                                Console.Out.WriteLine("Message successfully sent");
+                                return true;
+                            }
+                        }
+                    }
                 }
             }
-            else
+            catch (System.Net.Sockets.SocketException e)
             {
-                return false;
+                //No hacemos nada.
             }
-        }        
+            return false;
+        }
+        
 
         Socket Connect()
         {
@@ -204,6 +207,26 @@ namespace CommsModule
             else if (presponse is SerializableMissingTeachersList)
             {
                 mClientController.missingTeachersListReceived((SerializableMissingTeachersList)presponse);
+            }
+            else if (presponse is SerializableTeacherDataList)
+            {
+                mClientController.oddClockinsTeacherListReceived((SerializableTeacherDataList)presponse);
+            }           
+            else if (presponse is SerializableSubstitutionList)
+            {
+                mClientController.addSubstituteListToGUI((SerializableSubstitutionList)presponse);
+            }
+            else if (presponse is SerializableLateClockInsList)
+            {
+                mClientController.addLateClockinsToGUI((SerializableLateClockInsList)presponse);
+            }
+            else if (presponse is SerializableNoSchoolDaysList)
+            {
+                mClientController.addNoSchoolDaysToGUI((SerializableNoSchoolDaysList)presponse);
+            }
+            else if (presponse is SerializableTeachersMissesPerHourList)
+            {
+                mClientController.addTeachersMissesPerHourListToGUI((SerializableTeachersMissesPerHourList)presponse);
             }
         }
 

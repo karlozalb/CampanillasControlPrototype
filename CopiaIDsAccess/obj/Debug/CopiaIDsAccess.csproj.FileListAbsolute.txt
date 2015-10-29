@@ -1,0 +1,5 @@
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CopiaIDsAccess\bin\Debug\CopiaIDsAccess.exe.config
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CopiaIDsAccess\bin\Debug\CopiaIDsAccess.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CopiaIDsAccess\bin\Debug\CopiaIDsAccess.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CopiaIDsAccess\obj\Debug\CopiaIDsAccess.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CopiaIDsAccess\obj\Debug\CopiaIDsAccess.pdb

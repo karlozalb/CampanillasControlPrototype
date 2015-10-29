@@ -16,7 +16,7 @@ namespace CommsModule
 
         public SerializableTeacherData()
         {
-
+            mClockins = new List<ClockInDataNode>();
         }
 
         public void addData(DateTime pdate,TimeSpan ptime, TimeSpan pactualtime,int pdelayminutes,bool pisclockin)

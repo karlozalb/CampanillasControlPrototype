@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MainSplitSplitter" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">482</Value>
+      <Value Profile="(Default)">653</Value>
     </Setting>
     <Setting Name="SampleDBConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -14,7 +14,7 @@
       <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DB\ControlDB.mdf;Integrated Security=True</Value>
     </Setting>
     <Setting Name="LastCheckedDate" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">09/03/2015 23:58:00</Value>
+      <Value Profile="(Default)">10/13/2015 23:58:00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

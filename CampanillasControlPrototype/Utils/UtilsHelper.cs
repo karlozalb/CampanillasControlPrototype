@@ -9,15 +9,15 @@ namespace CampanillasControlPrototype
     public static class UtilsHelper
     {
 
-        public static DateTime FIRST_HOUR;
-        public static DateTime SECOND_HOUR;
-        public static DateTime THIRD_HOUR;
-        public static DateTime FOURTH_HOUR;
-        public static DateTime FIFTH_HOUR;
-        public static DateTime SIXTH_HOUR;
-        public static DateTime FINISH_HOUR;
-        public static DateTime PRE_SPARE_TIME;
-        public static DateTime TRANS_GUARDIA1, TRANS_GUARDIA2;
+        public static TimeSpan FIRST_HOUR;
+        public static TimeSpan SECOND_HOUR;
+        public static TimeSpan THIRD_HOUR;
+        public static TimeSpan FOURTH_HOUR;
+        public static TimeSpan FIFTH_HOUR;
+        public static TimeSpan SIXTH_HOUR;
+        public static TimeSpan FINISH_HOUR;
+        public static TimeSpan PRE_SPARE_TIME;
+        public static TimeSpan TRANS_GUARDIA1, TRANS_GUARDIA2;
 
         public static bool firstTime = true;
 
@@ -48,35 +48,41 @@ namespace CampanillasControlPrototype
                 case DayOfWeek.Friday:
                     intToday = 5;
                     break;
+                case DayOfWeek.Saturday:
+                    intToday = 6;
+                    break;
+                case DayOfWeek.Sunday:
+                    intToday = 7;
+                    break;
             }
 
             return intToday;
         }
 
-        public static string getPrettyCurrentDay(DayOfWeek ptoday)
+        public static string getPrettyCurrentDay(DateTime ptoday)
         {
             string stringToday = "";
 
-            switch (ptoday)
+            switch (ptoday.DayOfWeek)
             {
                 case DayOfWeek.Monday:
-                    stringToday = "Lunes";
+                    stringToday = "Lunes ";
                     break;
                 case DayOfWeek.Tuesday:
-                    stringToday = "Martes";
+                    stringToday = "Martes ";
                     break;
                 case DayOfWeek.Wednesday:
-                    stringToday = "Miércoles";
+                    stringToday = "Miércoles ";
                     break;
                 case DayOfWeek.Thursday:
-                    stringToday = "Jueves";
+                    stringToday = "Jueves ";
                     break;
                 case DayOfWeek.Friday:
-                    stringToday = "Viernes";
+                    stringToday = "Viernes ";
                     break;
             }
 
-            return stringToday;
+            return stringToday + ptoday.ToShortDateString();
         }
 
         /// <summary>
@@ -96,25 +102,32 @@ namespace CampanillasControlPrototype
         /// <param name="ptime"></param>
         /// <returns>The actual date</returns>
         public static DateTime getDateTimeByEntranceTime(int ptime)
-        {        
+        {
+            DateTime baseDate = Convert.ToDateTime("01/01/2001");
 
             switch (ptime)
             {
+                case 0:
+                    return baseDate + TRANS_GUARDIA1;
                 case 1: //First class' time
-                    return FIRST_HOUR;
+                    return baseDate + FIRST_HOUR;
                 case 2: //Second class' time
-                    return SECOND_HOUR;
+                    return baseDate + SECOND_HOUR;
                 case 3: //Third class' time
-                    return THIRD_HOUR;
+                    return baseDate + THIRD_HOUR;
                 case 4: //First class' time
-                    return FOURTH_HOUR;
+                    return baseDate + PRE_SPARE_TIME;
                 case 5: //First class' time
-                    return FIFTH_HOUR;
+                    return baseDate + FOURTH_HOUR;
                 case 6: //First class' time
-                    return SIXTH_HOUR;
+                    return baseDate + FIFTH_HOUR;
+                case 7: //First class' time
+                    return baseDate + SIXTH_HOUR;
+                case 8: //First class' time
+                    return baseDate + TRANS_GUARDIA2;
             }
 
-            return FINISH_HOUR;
+            return Convert.ToDateTime(FINISH_HOUR);
         }
 
         public static string getPrettyCurrentHour(int ptime)
@@ -144,6 +157,33 @@ namespace CampanillasControlPrototype
             return "Hora no lectiva";
         }
 
+        public static string getPrettyShortCurrentHour(int ptime)
+        {
+            switch (ptime)
+            {
+                case 0: //GT1
+                    return "GT1";
+                case 1: //First class' time
+                    return "1ª";
+                case 2: //Second class' time
+                    return "2ª";
+                case 3: //Third class' time
+                    return "3ª";
+                case 4: //Spare time
+                    return "R.";
+                case 5: //First class' time
+                    return "4ª";
+                case 6: //First class' time
+                    return "5ª";
+                case 7: //First class' time
+                    return "6ª";
+                case 8: //First class' time
+                    return "GT2";
+            }
+
+            return "";
+        }
+
         public static int scheduleTimeToNeededTime(int phour)
         {
             if (phour <= 3)
@@ -158,59 +198,61 @@ namespace CampanillasControlPrototype
 
         public static void resetHours()
         {
-            FIRST_HOUR = Convert.ToDateTime("08:15 AM");
-            SECOND_HOUR = Convert.ToDateTime("09:15 AM");
-            THIRD_HOUR = Convert.ToDateTime("10:15 AM");
-            FOURTH_HOUR = Convert.ToDateTime("11:45 AM");
-            FIFTH_HOUR = Convert.ToDateTime("12:45 PM");
-            SIXTH_HOUR = Convert.ToDateTime("13:45 PM");
-            FINISH_HOUR = Convert.ToDateTime("14:45 PM");
+            FIRST_HOUR = Convert.ToDateTime("08:15 AM").TimeOfDay;
+            SECOND_HOUR = Convert.ToDateTime("09:15 AM").TimeOfDay;
+            THIRD_HOUR = Convert.ToDateTime("10:15 AM").TimeOfDay;
+            FOURTH_HOUR = Convert.ToDateTime("11:45 AM").TimeOfDay;
+            FIFTH_HOUR = Convert.ToDateTime("12:45 PM").TimeOfDay;
+            SIXTH_HOUR = Convert.ToDateTime("13:45 PM").TimeOfDay;
+            FINISH_HOUR = Convert.ToDateTime("14:45 PM").TimeOfDay;
 
-            PRE_SPARE_TIME = Convert.ToDateTime("11:15 AM");
+            PRE_SPARE_TIME = Convert.ToDateTime("11:15 AM").TimeOfDay;
 
-            TRANS_GUARDIA1 = Convert.ToDateTime("07:45 AM");
-            TRANS_GUARDIA2 = Convert.ToDateTime("15:15 PM");
+            TRANS_GUARDIA1 = Convert.ToDateTime("07:45 AM").TimeOfDay;
+            TRANS_GUARDIA2 = Convert.ToDateTime("15:15 PM").TimeOfDay;
         }
 
         public static int getCurrentIntHour(DateTime pcurrenttime)
         {
-            if (pcurrenttime >= TRANS_GUARDIA1 && pcurrenttime <= FIRST_HOUR)
+            TimeSpan currentTimeSpan = pcurrenttime.TimeOfDay;
+
+            if (currentTimeSpan >= TRANS_GUARDIA1 && currentTimeSpan <= FIRST_HOUR)
             {
                 return GT1;
             }
-            else if (pcurrenttime >= FIRST_HOUR && pcurrenttime<= SECOND_HOUR)
+            else if (currentTimeSpan >= FIRST_HOUR && currentTimeSpan <= SECOND_HOUR)
             {
                 return FIRST;
             }
-            else if (pcurrenttime >= SECOND_HOUR && pcurrenttime <= THIRD_HOUR)
+            else if (currentTimeSpan >= SECOND_HOUR && currentTimeSpan <= THIRD_HOUR)
             {
                 return SECOND;
             }
-            else if (pcurrenttime >= THIRD_HOUR && pcurrenttime <= PRE_SPARE_TIME)
+            else if (currentTimeSpan >= THIRD_HOUR && currentTimeSpan <= PRE_SPARE_TIME)
             {
                 return THIRD;
             }
-            else if (pcurrenttime >= PRE_SPARE_TIME && pcurrenttime <= FOURTH_HOUR)
+            else if (currentTimeSpan >= PRE_SPARE_TIME && currentTimeSpan <= FOURTH_HOUR)
             {
                 return SPARE;
             }
-            else if (pcurrenttime >= FOURTH_HOUR && pcurrenttime <= FIFTH_HOUR)
+            else if (currentTimeSpan >= FOURTH_HOUR && currentTimeSpan <= FIFTH_HOUR)
             {
                 return FOURTH;
             }
-            else if (pcurrenttime >= FIFTH_HOUR && pcurrenttime <= SIXTH_HOUR)
+            else if (currentTimeSpan >= FIFTH_HOUR && currentTimeSpan <= SIXTH_HOUR)
             {
                 return FIFTH;
             }
-            else if (pcurrenttime >= SIXTH_HOUR && pcurrenttime <= FINISH_HOUR)
+            else if (currentTimeSpan >= SIXTH_HOUR && currentTimeSpan <= FINISH_HOUR)
             {
                 return SIXTH;
             }
-            else if (pcurrenttime >= SIXTH_HOUR && pcurrenttime <= TRANS_GUARDIA2)
+            else if (currentTimeSpan >= SIXTH_HOUR && currentTimeSpan <= TRANS_GUARDIA2)
             {
                 return GT2;
             }
-            else if (pcurrenttime >= TRANS_GUARDIA2)
+            else if (currentTimeSpan >= TRANS_GUARDIA2)
             {
                 return OFFTIME; //Fuera de hora lectiva.
             }

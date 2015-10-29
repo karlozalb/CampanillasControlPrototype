@@ -25,7 +25,7 @@ namespace CampanillasControlPrototype.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("482")]
+        [global::System.Configuration.DefaultSettingValueAttribute("653")]
         public int MainSplitSplitter {
             get {
                 return ((int)(this["MainSplitSplitter"]));
@@ -48,7 +48,7 @@ namespace CampanillasControlPrototype.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("09/03/2015 23:58:00")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10/13/2015 23:58:00")]
         public global::System.DateTime LastCheckedDate {
             get {
                 return ((global::System.DateTime)(this["LastCheckedDate"]));

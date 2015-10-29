@@ -1,27 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace CampanillasControlPrototype
 {
     public class PersonalNode
     {
-        private int ID;
+        private int ID;        
         private string NAME;
-        private List<DateTime> clockIns;
-        private List<HourNode> todaysHours;
+        private List<DateTime> mClockIns;
+        private List<HourNode> mTodaysHours;
         HourNode mLastModifiedHourNode;
         public MissingMessage mThisPersonMissingMessage, mThisPersonAccumulatedAbsenceMessage;
         public bool mIsTeacherPresent, mTodayMissingSaved;
         public bool mUnprocessedClockout;
+        public int mMissingTeacherId = -1;
+        public bool isBeingReplaced;
+        public bool isPASmember;
+        public int HEADQUARTERS;
 
         public PersonalNode(int pid,string pname)
         {
             ID = pid;
             NAME = pname;
-            clockIns = new List<DateTime>();
-            todaysHours = new List<HourNode>();
+            mClockIns = new List<DateTime>();
+            mTodaysHours = new List<HourNode>();
             mIsTeacherPresent = false;
+        }
+
+        public List<HourNode> getTodaysHours()
+        {
+            return mTodaysHours;
         }
 
         /// <summary>
@@ -33,7 +43,7 @@ namespace CampanillasControlPrototype
         {
             bool add = true;
 
-            foreach (DateTime date in clockIns)
+            foreach (DateTime date in mClockIns)
             {
                 if (DateTime.Compare(date, pdate) == 0 && (pdate - date).Minutes < ptreshold)
                 {
@@ -44,8 +54,8 @@ namespace CampanillasControlPrototype
 
             if (add)
             {
-                clockIns.Add(pdate);
-                if (clockIns.Count % 2 == 0) //even clock in, the person is exiting.
+                mClockIns.Add(pdate);
+                if (mClockIns.Count % 2 == 0) //even clock in, the person is exiting.
                 {
                     registerClockOut(pdate);
                     mIsTeacherPresent = false;
@@ -64,7 +74,7 @@ namespace CampanillasControlPrototype
         /// This method adds this person working hours to the list
         /// </summary>
         /// <param name="phours"></param>
-        public void addHours(string phours)
+        /*public void addHours(string phours)
         {
             //String to int conversion of class' hours.
             if (phours.Contains('-') || phours.Length == 0) return;
@@ -76,11 +86,16 @@ namespace CampanillasControlPrototype
             {
                 todaysHours.Add(new HourNode(Convert.ToInt32(splittedHours[i])));
             }
+        }*/
+
+        public void addHour(int phour,string psubject)
+        {
+            mTodaysHours.Add(new HourNode(phour,psubject));
         }
 
-        public void addHour(int phour)
+        public void addHour(HourNode phournode)
         {
-            todaysHours.Add(new HourNode(phour));
+            mTodaysHours.Add(phournode);
         }
 
         public void registerClockIn(DateTime pdate,int pcurrenthour)
@@ -98,7 +113,7 @@ namespace CampanillasControlPrototype
             *   - We set the person as missing in the DB.
             */
 
-            foreach (HourNode h in todaysHours)
+            foreach (HourNode h in mTodaysHours)
             {
                 if (!h.mAlreadyChecked && h.mHour <= pcurrenthour)
                 {
@@ -109,7 +124,7 @@ namespace CampanillasControlPrototype
                 }
             }
 
-            foreach (HourNode h in todaysHours)
+            foreach (HourNode h in mTodaysHours)
             {
                 if (h.mHour <= pcurrenthour)
                 {
@@ -120,31 +135,31 @@ namespace CampanillasControlPrototype
 
         public bool hasAccummulatedAbsence(int pcurrenthour)        {
 
-            if (pcurrenthour <= 1) return false;
+            if (pcurrenthour <= 0) return false;
 
             int index = 0;
 
             //Si la hora anterior el profesor no está, o no ha estado en ninguna de las horas anteriores... chungo.
 
-            for (int i = 0; i < todaysHours.Count; i++)
+            for (int i = 0; i < mTodaysHours.Count; i++)
             {
-                if (todaysHours[i].mHour == pcurrenthour)
+                if (mTodaysHours[i].mHour == pcurrenthour)
                 {
                     index = i;
                     break;
                 }
             }
 
-            return index > 0 && !todaysHours[index - 1].mAlreadyChecked || notPresentInEarlyHours(pcurrenthour);           
+            return index > 0 && !mTodaysHours[index - 1].mAlreadyChecked || notPresentInEarlyHours(pcurrenthour);           
         }
 
         private bool notPresentInEarlyHours(int pcurrenthour)
         {
-            if (todaysHours.Count > 0 && todaysHours[0].mHour == pcurrenthour) return false;
+            if (mTodaysHours.Count == 0 || mTodaysHours.Count > 0 && (mTodaysHours[0].mHour == pcurrenthour || mTodaysHours[0].mHour > pcurrenthour)) return false;
 
-            for (int i = 0; i < todaysHours.Count; i++)
+            for (int i = 0; i < mTodaysHours.Count; i++)
             {
-                if (todaysHours[i].mHour < pcurrenthour && todaysHours[i].mAlreadyChecked)
+                if (mTodaysHours[i].mHour < pcurrenthour && mTodaysHours[i].mAlreadyChecked)
                 {
                     return false;
                 }
@@ -169,9 +184,9 @@ namespace CampanillasControlPrototype
 
         public bool thereAreNoMoreHoursToday(int pcurrentHour)
         {
-            if (todaysHours.Count > 0)
+            if (mTodaysHours.Count > 0)
             {
-                HourNode h = todaysHours[todaysHours.Count - 1];
+                HourNode h = mTodaysHours[mTodaysHours.Count - 1];
 
                 if (h.mHour < pcurrentHour)
                 {
@@ -190,12 +205,12 @@ namespace CampanillasControlPrototype
 
         public bool notPresentToday()
         {
-            foreach (HourNode h in todaysHours)
+            foreach (HourNode h in mTodaysHours)
             {
                 if (h.mAlreadyChecked) return false;
             }
 
-            return todaysHours.Count > 0;
+            return mTodaysHours.Count > 0;
         }
 
         /// <summary>
@@ -203,7 +218,7 @@ namespace CampanillasControlPrototype
         /// </summary>
         public void clearCheckins()
         {
-            clockIns.Clear();
+            mClockIns.Clear();
         }
 
         /// <summary>
@@ -213,7 +228,7 @@ namespace CampanillasControlPrototype
         {
             mTodayMissingSaved = false;
             mIsTeacherPresent = false;
-            todaysHours.Clear();
+            mTodaysHours.Clear();
         }
 
         public int getId()
@@ -241,16 +256,16 @@ namespace CampanillasControlPrototype
         public DateTime getLastClockOutTime()
         {
             mUnprocessedClockout = false;
-            return clockIns.Last<DateTime>();
+            return mClockIns.Last<DateTime>();
         }
 
         public HourNode getHourNodeByInt(int pinthour)
         {
-            for (int i = 0; i < todaysHours.Count; i++)
+            for (int i = 0; i < mTodaysHours.Count; i++)
             {
-                if (todaysHours[i].mHour == pinthour)
+                if (mTodaysHours[i].mHour == pinthour)
                 {
-                    return todaysHours[i];
+                    return mTodaysHours[i];
                 }
             }
 
@@ -259,7 +274,7 @@ namespace CampanillasControlPrototype
 
         public bool hasHoursToday()
         {
-            return todaysHours.Count > 0;
+            return mTodaysHours.Count > 0;
         }
 
         public void clearMissingMessage()
@@ -282,15 +297,43 @@ namespace CampanillasControlPrototype
             mThisPersonAccumulatedAbsenceMessage = null;
         }
 
-        public void addAccumulatedAbsenceMessage(string pmessage)
+        public void addAccumulatedAbsenceMessage(string pmessage, int pcurrenthour)
         {
-            mThisPersonAccumulatedAbsenceMessage = new MissingMessage(pmessage);
+            string additionalData = " (";
+            for (int i=0;i<mTodaysHours.Count;i++)
+            {
+                if (mTodaysHours[i].mHour < pcurrenthour)
+                {
+                    additionalData += UtilsHelper.getPrettyShortCurrentHour(mTodaysHours[i].mHour);
+                }
+                if (i+1<mTodaysHours.Count && mTodaysHours[i+1].mHour < pcurrenthour)
+                {
+                    additionalData += ",";
+                }
+            }
+            additionalData += ")";
+
+            mThisPersonAccumulatedAbsenceMessage = new MissingMessage(pmessage+additionalData);
         }
 
         public MissingMessage getAccumulatedAbsenceMessage()
         {
+
             return mThisPersonAccumulatedAbsenceMessage;
         }        
+
+        public void copyTodayHours(PersonalNode ppersonalnode)
+        {
+            foreach (HourNode h in mTodaysHours)
+            {
+                HourNode newHourNode = new HourNode();
+                newHourNode.mHour = h.mHour;
+                newHourNode.mHourType = h.mHourType;
+                newHourNode.mActualHour = h.mActualHour;
+
+                ppersonalnode.addHour(newHourNode);
+            }
+        }
 
         public override string ToString()
         {
@@ -301,7 +344,7 @@ namespace CampanillasControlPrototype
         {
             bool add = true;
 
-            foreach (DateTime date in clockIns)
+            foreach (DateTime date in mClockIns)
             {
                 if (DateTime.Compare(date, pdate) == 0 && (pdate - date).Minutes < ptreshold)
                 {
@@ -314,9 +357,9 @@ namespace CampanillasControlPrototype
 
         public ClockInDataToStore addClockInv2(DateTime pdate,int pcurrenthour)
         {
-            clockIns.Add(pdate);
+            mClockIns.Add(pdate);
 
-            if (clockIns.Count % 2 == 0) //even clock in, the person is exiting.
+            if (mClockIns.Count % 2 == 0) //even clock in, the person is exiting.
             {
                 return registerClockOutv2(pdate, pcurrenthour);
             }
@@ -335,9 +378,9 @@ namespace CampanillasControlPrototype
             int i = 0;
             HourNode h = null;
 
-            for (i=0;i<todaysHours.Count;i++)
+            for (i=0;i<mTodaysHours.Count;i++)
             {
-                h = todaysHours[i];
+                h = mTodaysHours[i];
                 if (!h.mAlreadyChecked)
                 {
                     h.mAlreadyChecked = true;
@@ -347,9 +390,9 @@ namespace CampanillasControlPrototype
             }
 
             //Establecemos como fichadas todas las horas anteriores a la hora actual, y la hora actual.
-            for (int j = 0; j < todaysHours.Count; j++)
+            for (int j = 0; j < mTodaysHours.Count; j++)
             {
-                HourNode temp = todaysHours[j];
+                HourNode temp = mTodaysHours[j];
                 if (!temp.mAlreadyChecked && temp.mHour <= pcurrenthour)
                 {
                     temp.mAlreadyChecked = true;                   
@@ -358,16 +401,20 @@ namespace CampanillasControlPrototype
 
             ClockInDataToStore returnData = null;
 
-            if (h == null)
+            if (h == null && /*añadido para evitar problemas con fantasmas*/mTodaysHours.Count > 0)
             {
-                h = todaysHours[todaysHours.Count - 1];
+                h = mTodaysHours[mTodaysHours.Count - 1];
                 //Si estamos aqui es porque el profesor ha fichado en su última hora, despues de que éste haya fichado para salir
                 //es decir, entró a cierta hora, y durante su última hora lectiva se fue (clockout) y volvió (clockin).
                 returnData = new ClockInDataToStore(pdate, pdate, h.mActualHour, 0, true);
             }
+            else if (pcurrenthour >= UtilsHelper.OFFTIME || /*añadido para evitar problemas con fantasmas*/mTodaysHours.Count == 0)
+            {
+                returnData = new ClockInDataToStore(pdate, pdate, Convert.ToDateTime("01/01/2001 00:00:00"), 0, true);
+            }
             else
             {
-                returnData = new ClockInDataToStore(pdate,h.mClockInTime,h.mActualHour,h.mDelay.Hours*60+h.mDelay.Minutes,true);
+                returnData = new ClockInDataToStore(pdate, h.mClockInTime, h.mActualHour, h.mDelay.Hours * 60 + h.mDelay.Minutes, true);
             }
 
             mIsTeacherPresent = true; //El profesor está presente.   
@@ -383,40 +430,87 @@ namespace CampanillasControlPrototype
             ClockInDataToStore returnData = new ClockInDataToStore(pdate, pdate,Convert.ToDateTime("00:00 AM"),0,false);
 
             //Establecemos todas las horas SIGUIENTES a la hora actual como no fichadas.
-            for (int j = 0; j < todaysHours.Count; j++)
+            for (int j = 0; j < mTodaysHours.Count; j++)
             {
-                HourNode h = todaysHours[j];
+                HourNode h = mTodaysHours[j];
                 if (h.mHour > pcurrenthour)
                 {
                     h.mAlreadyChecked = false;
+                }else if (h.mHour == pcurrenthour)
+                {
+                    h.mTeacherWentEarly = true;
                 }
             }
 
             return returnData;
         }
 
+        /// <summary>
+        /// Para el caso en el que se apague la máquina, que se carguen los fichajes que haya ya en la BD, de forma que si por ejemplo un señor ficha
+        /// de entrada, se apaga el pc, y ficha de salida, no le de como dos fichajes de entrada.
+        /// </summary>
+        /// <param name="pdate"></param>
+        public void forcedAddClockIn(DateTime pdate)
+        {
+            mClockIns.Add(pdate);
+        }
+
         public class HourNode
         {
+            public const int SCHOOL = 1, GUARD = 2, DIR_GUARD = 3,DIR_STANDARD = 4,UNKNOWN = -1;
+
             public int mHour; // 1 to 6 format time when the person should have arrived. 
+            public int mHourType;
             public bool mAlreadyChecked; //Flag to set this node as checked or not, to avoid rechecking it later.
             public DateTime mActualHour; // ACTUAL Time when the person should have arrived.
             public DateTime mClockInTime; // Exact time when the person arrived.
             public TimeSpan mDelay; // mClockInTime - mActualHour
             public bool isClockIn;
+            public bool mTeacherWentEarly;
 
-            public HourNode(int hour)
+            public HourNode() { }
+
+            public HourNode(int hour,string psubject)
             {
                 mHour = hour;
+
+                mHourType = getHourTypeFromSubject(psubject);
+
                 mAlreadyChecked = false;
 
                 mActualHour = UtilsHelper.getDateTimeByEntranceTime(hour);
+            }
+
+            private int getHourTypeFromSubject(string phourtype)
+            {
+                string subjectUpper = phourtype.ToUpper();
+                if (subjectUpper.Contains("GUARDIA DIRECTIVA"))
+                {
+                    return DIR_GUARD;
+                }
+                else if (subjectUpper.Contains("FUNCION") || subjectUpper.Contains("FUNCIÓN"))
+                {
+                    return DIR_STANDARD;
+                }
+                else if (subjectUpper.Contains("SERVICIO DE GUARDIA"))
+                {
+                    return GUARD;
+                }
+                else if (subjectUpper.Length > 0)
+                {
+                    return SCHOOL;
+                }
+                else
+                {
+                    return UNKNOWN;
+                }
             }
 
             public void clockIn(DateTime pclockin)
             {
                 isClockIn = true;
                 mClockInTime = pclockin;
-                mDelay = pclockin - mActualHour;                
+                mDelay = pclockin.TimeOfDay - mActualHour.TimeOfDay;                
             }
 
             public void clockOut(DateTime pclockin)
@@ -424,15 +518,31 @@ namespace CampanillasControlPrototype
                 isClockIn = false;
                 mClockInTime = pclockin;
             }
+
+            public bool isTeacherLate()
+            {
+                return (mDelay.Minutes + mDelay.Hours * 60) > 0;
+            }
+
+            public bool isTeacherLeavingEarly()
+            {
+                return mTeacherWentEarly;
+            }
         }
 
         public class MissingMessage
         {
             public string missingString;
+            public Brush color;
 
             public MissingMessage(string pmessage)
             {
                 missingString = pmessage;
+            }
+
+            public void setColor(Brush pcolor)
+            {
+                color = pcolor;
             }
 
             public override string ToString()

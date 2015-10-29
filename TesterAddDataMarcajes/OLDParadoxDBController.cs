@@ -13,7 +13,7 @@ namespace CampanillasControlPrototype
     /// This class provide methods to deal with a Paradox database.
     /// 
     /// </summary>
-    class ParadoxDBController
+    class TestingParadoxDBController
     {     
         //Connection instance.
         private OleDbConnection mConnection;
@@ -21,7 +21,7 @@ namespace CampanillasControlPrototype
         //DATABASE CONNECTION STRING
         const string mConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=Paradox 7.x;Data Source=G:\SystemPin\PresenciaPin\db;";
 
-        public ParadoxDBController()
+        public TestingParadoxDBController()
         {
             mConnection = new OleDbConnection(mConnectionString);
             //getCheckIns(879,21,7,2015);
@@ -135,20 +135,25 @@ namespace CampanillasControlPrototype
 
         public void insertTESTClockIn(int pid)
         {
-            string query = "SELECT Id FROM Personal WHERE LTRIM(Codigo)=\"" + pid + "\";";
+            try {
+                string query = "SELECT Id FROM Personal WHERE LTRIM(Codigo)=\"" + pid + "\";";
 
-            mConnection.Open();
-            OleDbCommand cmd = new OleDbCommand(query, mConnection);
-            OleDbDataReader reader = cmd.ExecuteReader();
+                mConnection.Open();
+                OleDbCommand cmd = new OleDbCommand(query, mConnection);
+                OleDbDataReader reader = cmd.ExecuteReader();
 
-            if (reader.Read() && reader.HasRows)
-            {
-                cmd = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (" + (int)reader[0] + ",'" + DateTime.Now.ToShortDateString() + "','" + DateTime.Now.ToShortTimeString() + "',1,true,0);", mConnection);
-                
-                cmd.ExecuteNonQuery();
+                if (reader.Read() && reader.HasRows)
+                {
+                    cmd = new OleDbCommand("INSERT INTO Marcajes (Persona,Fecha,Hora,Terminal,Modificado,ModoIdentificacion) VALUES (" + (int)reader[0] + ",'" + DateTime.Now.ToShortDateString() + "','" + DateTime.Now.ToShortTimeString() + "',1,true,0);", mConnection);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                mConnection.Close();
+            }catch (OleDbException e)            {
+               
+                mConnection.Close();
             }
-                       
-            mConnection.Close();
         }
     }
 }

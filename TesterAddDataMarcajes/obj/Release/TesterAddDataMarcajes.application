@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="TesterAddDataMarcajes.exe.manifest" size="4847">
+    <dependentAssembly dependencyType="install" codebase="TesterAddDataMarcajes.exe.manifest" size="6168">
       <assemblyIdentity name="TesterAddDataMarcajes.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4UK5eqrnLWcCrAUvp6i9OH9AR0aEzN/4F9RPqJ6G098=</dsig:DigestValue>
+        <dsig:DigestValue>4/g0zAJNAhYOWwsAA2gjxaoTMg0fSIdcDdaH6I4FQtE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

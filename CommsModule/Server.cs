@@ -146,8 +146,7 @@ namespace CommsModule
                         Object messageReceived = mDataSerializer.deserialize(state.message);
 
                         processMessage(handler,messageReceived);
-                    }
-                        
+                    }                        
                 }
             }
             catch (Exception e)
@@ -200,6 +199,56 @@ namespace CommsModule
                 SerializableMissingTeachersList teachersList = mCommController.getMissingTeachers((SerializableGetMissingTeachersMessage)messageReceived);
                 sendBackToClient(handler, mDataSerializer.serialize(teachersList));
             }
+            else if (messageReceived is SerializableGetBadClockInsTeachersListMessage)
+            {
+                SerializableTeacherDataList teachersList = mCommController.getBadClockInsTeachersData((SerializableGetBadClockInsTeachersListMessage)messageReceived);
+                sendBackToClient(handler, mDataSerializer.serialize(teachersList));
+            }
+            else if (messageReceived is SerializableAddSubstituteTeacherMessage)
+            {
+                mCommController.addSubstitute((SerializableAddSubstituteTeacherMessage)messageReceived);
+                SerializableSubstitutionList subsList = mCommController.getSubstituteList();
+                sendBackToClient(handler, mDataSerializer.serialize(subsList));
+            }
+            else if (messageReceived is SerializableGetSubstituteListMessage)
+            {
+                SerializableSubstitutionList subsList = mCommController.getSubstituteList();
+                sendBackToClient(handler, mDataSerializer.serialize(subsList));
+            }
+            else if (messageReceived is SerializableDeleteSubstituteMessage)
+            {
+                mCommController.deleteSubstitute((SerializableDeleteSubstituteMessage)messageReceived);
+                SerializableSubstitutionList subsList = mCommController.getSubstituteList();
+                sendBackToClient(handler, mDataSerializer.serialize(subsList));
+            }
+            else if (messageReceived is SerializableGetLateClockInsListMessage)
+            {
+                SerializableLateClockInsList lateClockinsList = mCommController.getLateClockInsList((SerializableGetLateClockInsListMessage)messageReceived);
+                sendBackToClient(handler, mDataSerializer.serialize(lateClockinsList));
+            }
+            else if (messageReceived is SerializableGetNoSchoolDaysMessage)
+            {
+                SerializableNoSchoolDaysList noSchoolDays = mCommController.getNoSchoolDaysList();
+                sendBackToClient(handler, mDataSerializer.serialize(noSchoolDays));
+            }
+            else if (messageReceived is SerializableDeleteDayMessage)
+            {
+                mCommController.deleteNoShoolDay((SerializableDeleteDayMessage)messageReceived);
+                SerializableNoSchoolDaysList noSchoolDays = mCommController.getNoSchoolDaysList();
+                sendBackToClient(handler, mDataSerializer.serialize(noSchoolDays));
+            }
+            else if (messageReceived is SerializableAddDayMessage)
+            {
+                mCommController.addNoShoolDay((SerializableAddDayMessage)messageReceived);
+                SerializableNoSchoolDaysList noSchoolDays = mCommController.getNoSchoolDaysList();
+                sendBackToClient(handler, mDataSerializer.serialize(noSchoolDays));
+            }
+            else if (messageReceived is SerializableGetMissesPerHourMessage)
+            {
+                SerializableTeachersMissesPerHourList teachersList = mCommController.getMissesPerHourList((SerializableGetMissesPerHourMessage)messageReceived);
+                sendBackToClient(handler, mDataSerializer.serialize(teachersList));
+            }
+
         }
     
 

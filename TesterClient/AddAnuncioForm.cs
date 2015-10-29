@@ -14,10 +14,12 @@ namespace TesterClient
     public partial class AddAnuncioForm : Form
     {
         Client mClient;
+        ReportGenerator mReportGenerator;
 
-        public AddAnuncioForm(Client pclient)
+        public AddAnuncioForm(Client pclient,ReportGenerator peportgenerator)
         {
             mClient = pclient;
+            mReportGenerator = peportgenerator;
 
             InitializeComponent();
         }
@@ -34,8 +36,7 @@ namespace TesterClient
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            this.Dispose();
+            mReportGenerator.closeAddForm();
         }
     }
 }

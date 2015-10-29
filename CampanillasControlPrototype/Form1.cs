@@ -44,14 +44,14 @@ namespace CampanillasControlPrototype
 
         private void MainWindow_Resize(object sender, EventArgs e)
         {
-            mainSplitContainer.Width = this.Width - surroundingPaddingX * 2;
+            /*mainSplitContainer.Width = this.Width - surroundingPaddingX * 2;
             mainSplitContainer.Height = this.Height - surroundingPaddingY * 2;
 
             int labelWidth = this.Width / 3;
 
             dayLabel.Width = labelWidth;
             hourLabel.Width = labelWidth;
-            timeLabel.Width = labelWidth;
+            timeLabel.Width = labelWidth;*/
         }
 
         private void showCurrentTime()
@@ -70,6 +70,16 @@ namespace CampanillasControlPrototype
             if (mCommsController != null) mCommsController.stopServer();
         }
 
+        public ListBox getGuardPersonalListBox()
+        {
+            return guardListBox;
+        }
+
+        public ListBox getExecutiveListBox()
+        {
+            return executiveListBox;
+        }
+
         public ListBox getPersonalListBox()
         {
             return missingPersonalListBox;
@@ -78,12 +88,7 @@ namespace CampanillasControlPrototype
         public ListBox getPersonalAccummulatedAbsenceListBox()
         {
             return accummulatedAbsenceListBox;
-        }
-
-        private void missingPersonalListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         public Label getDayLabel()
         {
@@ -94,6 +99,40 @@ namespace CampanillasControlPrototype
         {
             return hourLabel;
         }
+
+        private void guardListBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index >= 0)
+            {
+                Brush c = ((PersonalNode.MissingMessage)((ListBox)sender).Items[e.Index]).color;
+
+                if (c == null)
+                {
+                    c = Brushes.Beige;
+                }
+
+                e.DrawBackground();
+
+                e.Graphics.DrawString(((ListBox)sender).Items[e.Index].ToString(), e.Font, c, e.Bounds, StringFormat.GenericDefault);
+            }
+        }
+
+        private void directListBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index >= 0)
+            {
+                Brush c = ((PersonalNode.MissingMessage)((ListBox)sender).Items[e.Index]).color;
+
+                if(c == null)
+                {
+                    c = Brushes.Beige;
+                }
+
+                e.DrawBackground();
+
+                e.Graphics.DrawString(((ListBox)sender).Items[e.Index].ToString(), e.Font, c, e.Bounds, StringFormat.GenericDefault);
+            }
+        }       
 
         public Label getAdLabel()
         {

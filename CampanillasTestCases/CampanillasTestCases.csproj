@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CampanillasControlPrototype\CampanillasControlPrototype.csproj">
+    <ProjectReference Include="..\CampanillasControlPrototype\CampanillasControl.csproj">
       <Project>{47bf97d7-5b2b-49cd-9179-c33a421e69e7}</Project>
-      <Name>CampanillasControlPrototype</Name>
+      <Name>CampanillasControl</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

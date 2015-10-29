@@ -1,0 +1,35 @@
+Este programa básicamente coge un horario anticuado, pero con identificadores de profesores 
+puestos (columna IdProfesor), y los añade a un horario nuevo sin identificadores.
+
+Para hacer esto se necesita:
+- El archivo estructura.mdb que está en C:\PresenceInformer\DB (la última versión del horario)
+- El archivo Plantilla_Firmas más actualizado o en el que se quieran copiar los identificadores.
+
+Para ejecutar el programa de copia, haz SHIFT+Click derecho del ratón en la carpeta donde está
+este mismo archivo de texto, y elige "Abrir ventana de comandos aquí".
+
+Una vez abierta la ventana de comandos, lo único que hay que escribir es:
+
+AccessCopiaID.exe [origen].mdb [destino].mdb
+
+origen = el horario estructura.mdb mencionado antes, que tiene los identificadores.
+destino = el horario más actualizado que no tiene identificadores.
+
+Tras ejecutar este comando, se generará un archivo estructura-output.mdb que no será más que
+la última versión del horario con los identificadores de la versión anterior del horario copiados.
+
+Ahora, cierra PresenceInformer (el programa que se ve en la sala de profesores) y:
+1 - copia estructura-output.mdb a C:\PresenceInformer\DB
+2 - borra estructura.mdb de la carpeta C:\PresenceInformer\DB
+3 - renombra estructura-output.mdb a estructura.mdb
+4 - Inicia de nuevo PresenceInformer (con el icono que se ve en la barra de tareas)
+
+¡¡Nota!!: recomiendo usar la tecla tabulador para ahorrarse escribir, por ejemplo, para escribir
+el comando anterior basta con hacer:
+
+Ac[pulsa tabulador y se autocompleta solo] es[pulsa de nuevo tabulador] Pl[pulsa de nuevo tabulador]
+
+siendo Ac,es y Pl las primeras letras de los nombres de los archivos.
+
+¡¡Nota 2!!: este programa COPIA identificadores, pero si un profesor no tiene identificador,
+ tendrá que añadirse a mano a posteriori.

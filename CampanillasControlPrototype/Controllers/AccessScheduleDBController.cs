@@ -8,7 +8,7 @@ using System.IO;
 
 namespace CampanillasControlPrototype
 {
-    class AccessScheduleDBController
+    public class AccessScheduleDBController
     {
         static string mACCESSDBconnectionString;
 
@@ -18,12 +18,15 @@ namespace CampanillasControlPrototype
         {
             mACCESSDBconnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+Directory.GetCurrentDirectory()+"\\DB\\estructura.mdb;";
 
+            //mACCESSDBconnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Documents\\Visual Studio 2015\\Projects\\CampanillasControlPrototype\\CampanillasControlPrototype\\DB\\estructura.mdb;";
+
+
             teachersTimeTables = new Dictionary<int, PersonSchedule>();
 
             using (OleDbConnection MyConn = new OleDbConnection(mACCESSDBconnectionString))
             {
                 MyConn.Open();
-                OleDbCommand Cmd = new OleDbCommand("SELECT IdProfesor,Profesorado,Dia,Tramohorario,Asignatura,Aula FROM Horarios;", MyConn); ;
+                OleDbCommand Cmd = new OleDbCommand("SELECT IdProfesor,Profesorado,Dia,Tramohorario,Asignatura,Aula,Sede FROM Horarios;", MyConn); ;
                 OleDbDataReader ObjReader = Cmd.ExecuteReader();
                 while (ObjReader.Read())
                 {
@@ -33,9 +36,37 @@ namespace CampanillasControlPrototype
                     string hora = ObjReader[3].ToString();
                     string asignatura = ObjReader[4].ToString();
                     string aula = ObjReader[5].ToString();
+                    string sede = ObjReader[6].ToString();
 
-                    if (profesor.Length > 0 && dia.Length > 0 && hora.Length > 0) addData(profesorid,profesor, dia, hora, asignatura, aula);
+                    if (profesor.Length > 0 && dia.Length > 0 && hora.Length > 0) addData(profesorid,profesor, dia, hora, asignatura, aula,sede);
                 }
+            }
+        }
+
+        public void setHeadQuarters(List<PersonalNode> ppersonal)
+        {
+            foreach (PersonalNode p in ppersonal)
+            {
+                PersonSchedule pschedule;
+                if (teachersTimeTables.TryGetValue(p.getId(),out pschedule))
+                {
+                    p.HEADQUARTERS = pschedule.HEADQUARTERS;
+                }
+            }
+        }
+
+        public void DEBUGCOPYFROMPARADOXTOACCESS(List<PersonalNode> ppersonallist)
+        {
+            using (OleDbConnection MyConn = new OleDbConnection(mACCESSDBconnectionString))
+            {
+                MyConn.Open();
+
+                foreach (PersonalNode p in ppersonallist)
+                {
+                    OleDbCommand Cmd = new OleDbCommand("UPDATE Horarios SET Profesorado = \""+ p.getName() + "\" WHERE IdProfesor = "+p.getId()+";", MyConn); ;
+                    Cmd.ExecuteNonQuery();
+                }
+
             }
         }
 
@@ -57,11 +88,18 @@ namespace CampanillasControlPrototype
             }
         }
 
-        public void addData(string pprofid,string pprof, string pdia, string phora, string pasignatura, string paula)
+        public void addData(string pprofid,string pprof, string pdia, string phora, string pasignatura, string paula,string psede)
         {
             PersonSchedule h;
 
-            int profId = Convert.ToInt32(pprofid);
+            int profId = -1;
+
+            try {
+                profId = Convert.ToInt32(pprofid);
+            }catch(FormatException fe)
+            {               
+                return;
+            }
 
             if (teachersTimeTables.TryGetValue(profId, out h))
             {
@@ -70,6 +108,16 @@ namespace CampanillasControlPrototype
             else
             {
                 h = new PersonSchedule();
+
+                if (psede.Equals("IES", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    h.HEADQUARTERS = PersonSchedule.IES;
+                }
+                else if (psede.Equals("PTA", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    h.HEADQUARTERS = PersonSchedule.PTA;
+                }
+
                 h.NAME = pprof;
                 h.addHour(stringToDay(pdia), stringToHour(phora), paula, pasignatura);
                 teachersTimeTables.Add(profId, h);
@@ -80,9 +128,14 @@ namespace CampanillasControlPrototype
         {
             int ret = -1;
 
-            if (phora.Contains("hora"))
-            {
+            if (phora.ToUpper().Contains("HORA")){
                 ret = UtilsHelper.scheduleTimeToNeededTime(Convert.ToInt32(phora[0].ToString()));
+            }else if(phora.ToUpper().Contains("RECREO")){
+                ret = UtilsHelper.SPARE;
+            }else if (phora.ToUpper().Contains("TRANS. 1")){
+                ret = UtilsHelper.GT1;
+            }else if (phora.ToUpper().Contains("TRANS. 2")){
+                ret = UtilsHelper.GT2;
             }
 
             return ret;
@@ -140,13 +193,16 @@ namespace CampanillasControlPrototype
                 }
             }
             return results;
-        }
+        }         
     }
 
-    class PersonSchedule
+    public class PersonSchedule
     {
         public string NAME;
+        public int HEADQUARTERS;
         public SortedList<int, SortedList<int, NodePersonSchedule>> TIMETABLE;
+
+        public const int IES = 1, PTA = 2;
 
         public PersonSchedule()
         {
@@ -178,7 +234,7 @@ namespace CampanillasControlPrototype
         }
     }
 
-    class NodePersonSchedule
+    public class NodePersonSchedule
     {
         public string CLASSROOM;
         public string SUBJECT;

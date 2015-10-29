@@ -13,5 +13,10 @@ namespace CommsModule
         void showMessage(string ptext);
         void deleteAdResponseReceived(SerializableAdList plist);
         void missingTeachersListReceived(SerializableMissingTeachersList presponse);
+        void oddClockinsTeacherListReceived(SerializableTeacherDataList presponse);
+        void addSubstituteListToGUI(SerializableSubstitutionList presponse);
+        void addLateClockinsToGUI(SerializableLateClockInsList presponse);
+        void addNoSchoolDaysToGUI(SerializableNoSchoolDaysList presponse);
+        void addTeachersMissesPerHourListToGUI(SerializableTeachersMissesPerHourList presponse);
     }
 }

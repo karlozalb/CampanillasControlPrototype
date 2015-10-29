@@ -15,5 +15,14 @@ namespace CommsModule
         SerializableAdList getAdList();
         void deleteAd(SerializableDeleteAd messageReceived);
         SerializableMissingTeachersList getMissingTeachers(SerializableGetMissingTeachersMessage messageReceived);
+        SerializableTeacherDataList getBadClockInsTeachersData(SerializableGetBadClockInsTeachersListMessage messageReceived);
+        void addSubstitute(SerializableAddSubstituteTeacherMessage messageReceived);
+        SerializableSubstitutionList getSubstituteList();
+        void deleteSubstitute(SerializableDeleteSubstituteMessage messageReceived);
+        SerializableLateClockInsList getLateClockInsList(SerializableGetLateClockInsListMessage messageReceived);
+        SerializableNoSchoolDaysList getNoSchoolDaysList();
+        void addNoShoolDay(SerializableAddDayMessage messageReceived);
+        void deleteNoShoolDay(SerializableDeleteDayMessage messageReceived);
+        SerializableTeachersMissesPerHourList getMissesPerHourList(SerializableGetMissesPerHourMessage messageReceived);
     }
 }

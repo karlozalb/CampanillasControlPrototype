@@ -2,3 +2,5 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\bin\Debug\CommsModule.pdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\obj\Debug\CommsModule.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\obj\Debug\CommsModule.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\obj\Debug\CommsModule.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CommsModule\bin\Debug\System.Net.Http.dll

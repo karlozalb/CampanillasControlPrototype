@@ -45,6 +45,7 @@ namespace TesterClient
             fs.Close();
         }
 
+
         public void toXLS(string ptitle,string pworksheetname, DataGridView dGV, string filename)
         {
             FileInfo newFile = new FileInfo(filename);
@@ -61,7 +62,7 @@ namespace TesterClient
 
                 package.Workbook.Properties.Title = ptitle;
 
-
+                //Headers de las columnas
                 for (int j = 0; j < dGV.Columns.Count; j++)
                 {
                     worksheet.Cells[1, j + 1].Value = dGV.Columns[j].HeaderText;
@@ -75,6 +76,7 @@ namespace TesterClient
                     for (int j = 0; j < dGV.Rows[i].Cells.Count; j++)
                     {
                         worksheet.Cells[i + 2, j + 1].Value = dGV.Rows[i].Cells[j].Value;
+                        worksheet.Cells[i + 2, j + 1].Style.Fill.BackgroundColor.SetColor(dGV.Rows[i].Cells[j].Style.BackColor);
                         if (j == 0)
                         {
                             worksheet.Cells[i + 2, j + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
