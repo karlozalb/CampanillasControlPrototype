@@ -37,7 +37,7 @@ namespace TesterClient
         public ReportGenerator()
         {            
             Login_Dialog_Form1 NewLogin = new Login_Dialog_Form1();
-            DialogResult Result = NewLogin.ShowDialog();
+            /*DialogResult Result = NewLogin.ShowDialog();
             switch (Result)
             {
                 case DialogResult.OK:
@@ -46,7 +46,9 @@ namespace TesterClient
                 case DialogResult.Cancel:
                     this.Close();
                     break;
-            }            
+            }*/
+
+            startReportGenerator();
         }
 
         public void startReportGenerator()
@@ -79,7 +81,7 @@ namespace TesterClient
 
                 SerializableGetTeacherDataMessage message = new SerializableGetTeacherDataMessage();
 
-                if (comboBoxProfesor.SelectedItem != null)
+                if (checkDates() && comboBoxProfesor.SelectedItem != null)
                 {
 
                     message.teacherID = Convert.ToInt32(((SerializableTeacherList.TeacherData)comboBoxProfesor.SelectedItem).mId);
@@ -287,7 +289,14 @@ namespace TesterClient
                     case 1:
                         if (tabPanel.SelectedIndex == 0)
                         {
-                            mExcelExporter.toXLS("Fichajes de " + ((SerializableTeacherList.TeacherData)comboBoxProfesor.SelectedItem).mTeacherName + " desde " + dateTimeInit.Value.ToShortDateString() + " hasta " + dateTimeEnd.Value.ToShortDateString(),"Fichajes",dataGridFichajes, saveFileDialog1.FileName);
+                            if (comboBoxProfesor.SelectedItem == null)
+                            {
+                                MessageBox.Show("Seleccione un profesor para obtener los datos por favor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                mExcelExporter.toXLS("Fichajes de " + ((SerializableTeacherList.TeacherData)comboBoxProfesor.SelectedItem).mTeacherName + " desde " + dateTimeInit.Value.ToShortDateString() + " hasta " + dateTimeEnd.Value.ToShortDateString(), "Fichajes", dataGridFichajes, saveFileDialog1.FileName);
+                            }
                         }
                         else if (tabPanel.SelectedIndex == 1)
                         {
@@ -300,6 +309,10 @@ namespace TesterClient
                         else if (tabPanel.SelectedIndex == 3)
                         {
                             mExcelExporter.toXLS("Fichajes tardíos desde " + dateTimeInit.Value.ToShortDateString() + " hasta " + dateTimeEnd.Value.ToShortDateString(), "Fichajes tardíos", dataGridFichajesTarde, saveFileDialog1.FileName);
+                        }
+                        else if (tabPanel.SelectedIndex == 4)
+                        {
+                            mExcelExporter.toXLS("Faltas por horas desde " + dateTimeInit.Value.ToShortDateString() + " hasta " + dateTimeEnd.Value.ToShortDateString(), "Faltas por horas", dataGridFaltasPorHoras, saveFileDialog1.FileName);
                         }
                         else
                         {
@@ -794,7 +807,68 @@ namespace TesterClient
             {
                 tablePanelLeyenda.Visible = false;
             }
-        }     
+        }
+
+        private void buttonGetFaltasCompletasIndiv_Click(object sender, EventArgs e)
+        {
+            if (checkDates() && comboBoxProfesor.SelectedItem != null)
+            {
+                if (!mTransactionInProgress)
+                {
+                    mTransactionInProgress = true;
+
+                    dataGridFaltas.Rows.Clear();
+
+                    tabPanel.SelectTab(1);
+                    SerializableGetMissingTeachersMessage message = new SerializableGetMissingTeachersMessage();
+                    message.init = dateTimeInit.Value;
+                    message.end = dateTimeEnd.Value;
+                    message.teacherId = Convert.ToInt32(((SerializableTeacherList.TeacherData)comboBoxProfesor.SelectedItem).mId);
+
+                    if (!mClient.SendMessageAsyncForResponse(message))
+                    {
+                        showConnectionErrorMessage();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un profesor para obtener los datos por favor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mTransactionInProgress = false;
+            }           
+        }
+
+        private void buttonGetFaltasHorasIndiv_Click(object sender, EventArgs e)
+        {
+            if (checkDates() && comboBoxProfesor.SelectedItem != null)
+            {
+                if (!mTransactionInProgress)
+                {
+                    mTransactionInProgress = true;
+                    if (checkDates())
+                    {
+                        tabPanel.SelectTab(4);
+
+                        SerializableGetMissesPerHourMessage message = new SerializableGetMissesPerHourMessage();
+                        message.mInit = dateTimeInit.Value;
+                        message.mEnd = dateTimeEnd.Value;
+                        message.teacherId = Convert.ToInt32(((SerializableTeacherList.TeacherData)comboBoxProfesor.SelectedItem).mId);
+
+                        dataGridFaltasPorHoras.SafeInvoke(d => d.Rows.Clear());
+
+                        if (!mClient.SendMessageAsyncForResponse(message))
+                        {
+                            showConnectionErrorMessage();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un profesor para obtener los datos por favor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mTransactionInProgress = false;
+            }            
+        }
 
         public void showNoSchoolDaysForm()
         {

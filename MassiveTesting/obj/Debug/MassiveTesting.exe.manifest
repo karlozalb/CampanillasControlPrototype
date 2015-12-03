@@ -42,18 +42,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CampanillasControlPrototype.exe" size="112640">
-      <assemblyIdentity name="CampanillasControlPrototype" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bWwtxdxSr6N1OyBCm8H3E/DOGkCWqgNiIdiTrMVMMkA=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CommsModule.dll" size="24064">
       <assemblyIdentity name="CommsModule" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -61,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8q1LTfHpYuZYrMWqQwdhAo8Rbs42ulJHh4ZKk7k/z0E=</dsig:DigestValue>
+        <dsig:DigestValue>OnMTIjx1BS/fEw/4K4OIdWP6mUiKo1sJkepChFoSefU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,19 +73,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>F4Dou5NTH2mt6jQL7J0HFmI0dh0kGmRuybwG/7uvolU=</dsig:DigestValue>
+        <dsig:DigestValue>xksBGK8oL/c4D+xjlO1PYgM2Ljveym+V2tiFCJ3QNME=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="457216">
-      <assemblyIdentity name="MySql.Data" version="6.9.7.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PresenceInformer.exe" size="189440">
+      <assemblyIdentity name="PresenceInformer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Glrei6GAe8HbvJIBGNBEWTg+dDds0IYH3b/trf/SHxo=</dsig:DigestValue>
+        <dsig:DigestValue>XfUs33d0mUD9Ujh8P1UGyqLo9Byj1inDZ9yie5plDts=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

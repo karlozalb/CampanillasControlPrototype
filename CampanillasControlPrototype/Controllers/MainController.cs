@@ -142,7 +142,12 @@ namespace CampanillasControlPrototype
 
         internal SerializableTeachersMissesPerHourList getMissesPerHourList(DateTime pinit, DateTime pend)
         {
-            return mDBController.getTeacherMissesPerHourList(mPersonal,pinit,pend);
+            return mDBController.getTeacherMissesPerHourList(mPersonal,pinit,pend,0);
+        }
+
+        internal SerializableTeachersMissesPerHourList getMissesPerHourList(DateTime pinit, DateTime pend, int pteacherid)
+        {
+            return mDBController.getTeacherMissesPerHourList(mPersonal, pinit, pend, pteacherid);
         }
 
         private bool isASchoolDay(DateTime pday)
@@ -151,7 +156,7 @@ namespace CampanillasControlPrototype
 
             foreach (DateTime date in mNoSchoolDays)
             {
-                if (DateTime.Compare(date, pday) == 0) return false;
+                if (date.Date == pday.Date) return false;
             }
 
             return true;
@@ -229,7 +234,7 @@ namespace CampanillasControlPrototype
         //public void startTaskV2(object sender, ElapsedEventArgs e)
         public void startTaskV2(object pthreaddata)
         {
-            if (CURRENT_INT_DAY == 6 || CURRENT_INT_DAY == 7)
+            if (!isASchoolDay(DateTime.Now) ||  CURRENT_INT_DAY == 6 || CURRENT_INT_DAY == 7)
             {
                 Debug.WriteLine("Día no lectivo");
                 updateDay();
@@ -647,6 +652,7 @@ namespace CampanillasControlPrototype
             mTaskTimer.Dispose();*/
             mEnabled = false;
             mAdPanelController.stopTask();
+            mMySQLController.stopMySQL();
         }
 
         /**
@@ -725,7 +731,12 @@ namespace CampanillasControlPrototype
 
         public SerializableMissingTeachersList getMissingTeachers(DateTime pinit, DateTime pend)
         {
-            return mDBController.getMissingTeachers(mPersonal,pinit,pend);
+            return mDBController.getMissingTeachers(mPersonal,pinit,pend,0);
+        }
+
+        public SerializableMissingTeachersList getMissingTeachers(DateTime pinit, DateTime pend,int pteacherid)
+        {
+            return mDBController.getMissingTeachers(mPersonal, pinit, pend, pteacherid);
         }
 
         public void updatePersonalList()

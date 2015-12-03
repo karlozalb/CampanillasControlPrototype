@@ -108,6 +108,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.buttonGetFaltasCompletasIndiv = new System.Windows.Forms.Button();
+            this.buttonGetFaltasHorasIndiv = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabFichajesTardios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFichajesTarde)).BeginInit();
@@ -295,11 +297,11 @@
             // 
             // buttonGetFaltas
             // 
-            this.buttonGetFaltas.Location = new System.Drawing.Point(12, 380);
+            this.buttonGetFaltas.Location = new System.Drawing.Point(12, 446);
             this.buttonGetFaltas.Name = "buttonGetFaltas";
             this.buttonGetFaltas.Size = new System.Drawing.Size(296, 36);
             this.buttonGetFaltas.TabIndex = 15;
-            this.buttonGetFaltas.Text = "Obtener faltas de día completo";
+            this.buttonGetFaltas.Text = "Obtener faltas de día completo de TOD@S";
             this.buttonGetFaltas.UseVisualStyleBackColor = true;
             this.buttonGetFaltas.Click += new System.EventHandler(this.buttonGetFaltas_Click);
             // 
@@ -307,11 +309,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 357);
+            this.label7.Location = new System.Drawing.Point(8, 423);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 20);
+            this.label7.Size = new System.Drawing.Size(222, 20);
             this.label7.TabIndex = 20;
-            this.label7.Text = "Informe de faltas";
+            this.label7.Text = "Informe de faltas GLOBAL";
             // 
             // label8
             // 
@@ -319,15 +321,15 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(8, 130);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(163, 20);
+            this.label8.Size = new System.Drawing.Size(285, 20);
             this.label8.TabIndex = 21;
-            this.label8.Text = "Informe de fichajes";
+            this.label8.Text = "Informe de fichajes y faltas INDIV.";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 466);
+            this.label9.Location = new System.Drawing.Point(8, 532);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(144, 20);
             this.label9.TabIndex = 22;
@@ -345,7 +347,7 @@
             // 
             // oddClockinsButton
             // 
-            this.oddClockinsButton.Location = new System.Drawing.Point(12, 489);
+            this.oddClockinsButton.Location = new System.Drawing.Point(12, 555);
             this.oddClockinsButton.Name = "oddClockinsButton";
             this.oddClockinsButton.Size = new System.Drawing.Size(296, 36);
             this.oddClockinsButton.TabIndex = 24;
@@ -369,7 +371,7 @@
             this.tabFichajesTardios.Location = new System.Drawing.Point(4, 22);
             this.tabFichajesTardios.Name = "tabFichajesTardios";
             this.tabFichajesTardios.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFichajesTardios.Size = new System.Drawing.Size(602, 485);
+            this.tabFichajesTardios.Size = new System.Drawing.Size(602, 710);
             this.tabFichajesTardios.TabIndex = 3;
             this.tabFichajesTardios.Text = "Fichajes tardíos";
             this.tabFichajesTardios.UseVisualStyleBackColor = true;
@@ -399,7 +401,7 @@
             this.dataGridFichajesTarde.MaximumSize = new System.Drawing.Size(8000, 8000);
             this.dataGridFichajesTarde.Name = "dataGridFichajesTarde";
             this.dataGridFichajesTarde.ReadOnly = true;
-            this.dataGridFichajesTarde.Size = new System.Drawing.Size(596, 479);
+            this.dataGridFichajesTarde.Size = new System.Drawing.Size(596, 704);
             this.dataGridFichajesTarde.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn6
@@ -447,7 +449,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(602, 485);
+            this.tabPage3.Size = new System.Drawing.Size(602, 710);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Fichajes impares";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -477,7 +479,7 @@
             this.dataGridViewOddClockins.MaximumSize = new System.Drawing.Size(8000, 8000);
             this.dataGridViewOddClockins.Name = "dataGridViewOddClockins";
             this.dataGridViewOddClockins.ReadOnly = true;
-            this.dataGridViewOddClockins.Size = new System.Drawing.Size(596, 479);
+            this.dataGridViewOddClockins.Size = new System.Drawing.Size(596, 704);
             this.dataGridViewOddClockins.TabIndex = 4;
             // 
             // Persona
@@ -525,7 +527,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(602, 485);
+            this.tabPage2.Size = new System.Drawing.Size(602, 710);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Faltas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -542,7 +544,7 @@
             this.dataGridFaltas.Location = new System.Drawing.Point(3, 3);
             this.dataGridFaltas.Name = "dataGridFaltas";
             this.dataGridFaltas.ReadOnly = true;
-            this.dataGridFaltas.Size = new System.Drawing.Size(596, 479);
+            this.dataGridFaltas.Size = new System.Drawing.Size(596, 704);
             this.dataGridFaltas.TabIndex = 0;
             // 
             // Column1
@@ -650,7 +652,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(602, 485);
+            this.tabPage4.Size = new System.Drawing.Size(602, 710);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Faltas por horas";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -676,7 +678,7 @@
             this.dataGridFaltasPorHoras.Location = new System.Drawing.Point(3, 3);
             this.dataGridFaltasPorHoras.Name = "dataGridFaltasPorHoras";
             this.dataGridFaltasPorHoras.ReadOnly = true;
-            this.dataGridFaltasPorHoras.Size = new System.Drawing.Size(596, 479);
+            this.dataGridFaltasPorHoras.Size = new System.Drawing.Size(596, 704);
             this.dataGridFaltasPorHoras.TabIndex = 0;
             // 
             // Profesorado
@@ -758,11 +760,11 @@
             // 
             // buttonFaltasPorHoras
             // 
-            this.buttonFaltasPorHoras.Location = new System.Drawing.Point(12, 422);
+            this.buttonFaltasPorHoras.Location = new System.Drawing.Point(12, 488);
             this.buttonFaltasPorHoras.Name = "buttonFaltasPorHoras";
             this.buttonFaltasPorHoras.Size = new System.Drawing.Size(296, 36);
             this.buttonFaltasPorHoras.TabIndex = 26;
-            this.buttonFaltasPorHoras.Text = "Obtener informe por horas";
+            this.buttonFaltasPorHoras.Text = "Obtener informe por horas de TOD@S";
             this.buttonFaltasPorHoras.UseVisualStyleBackColor = true;
             this.buttonFaltasPorHoras.Click += new System.EventHandler(this.buttonFaltasPorHoras_Click);
             // 
@@ -776,7 +778,7 @@
             this.tablePanelLeyenda.Controls.Add(this.label11, 0, 2);
             this.tablePanelLeyenda.Controls.Add(this.label10, 0, 1);
             this.tablePanelLeyenda.Controls.Add(this.label6, 0, 0);
-            this.tablePanelLeyenda.Location = new System.Drawing.Point(12, 553);
+            this.tablePanelLeyenda.Location = new System.Drawing.Point(12, 608);
             this.tablePanelLeyenda.Name = "tablePanelLeyenda";
             this.tablePanelLeyenda.RowCount = 6;
             this.tablePanelLeyenda.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -873,11 +875,33 @@
             this.label6.Text = "Falta de hora completa";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // buttonGetFaltasCompletasIndiv
+            // 
+            this.buttonGetFaltasCompletasIndiv.Location = new System.Drawing.Point(12, 338);
+            this.buttonGetFaltasCompletasIndiv.Name = "buttonGetFaltasCompletasIndiv";
+            this.buttonGetFaltasCompletasIndiv.Size = new System.Drawing.Size(296, 33);
+            this.buttonGetFaltasCompletasIndiv.TabIndex = 28;
+            this.buttonGetFaltasCompletasIndiv.Text = "Obtener faltas de día completo";
+            this.buttonGetFaltasCompletasIndiv.UseVisualStyleBackColor = true;
+            this.buttonGetFaltasCompletasIndiv.Click += new System.EventHandler(this.buttonGetFaltasCompletasIndiv_Click);
+            // 
+            // buttonGetFaltasHorasIndiv
+            // 
+            this.buttonGetFaltasHorasIndiv.Location = new System.Drawing.Point(12, 377);
+            this.buttonGetFaltasHorasIndiv.Name = "buttonGetFaltasHorasIndiv";
+            this.buttonGetFaltasHorasIndiv.Size = new System.Drawing.Size(296, 33);
+            this.buttonGetFaltasHorasIndiv.TabIndex = 29;
+            this.buttonGetFaltasHorasIndiv.Text = "Obtener informe por horas";
+            this.buttonGetFaltasHorasIndiv.UseVisualStyleBackColor = true;
+            this.buttonGetFaltasHorasIndiv.Click += new System.EventHandler(this.buttonGetFaltasHorasIndiv_Click);
+            // 
             // ReportGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 760);
+            this.Controls.Add(this.buttonGetFaltasHorasIndiv);
+            this.Controls.Add(this.buttonGetFaltasCompletasIndiv);
             this.Controls.Add(this.tablePanelLeyenda);
             this.Controls.Add(this.buttonFaltasPorHoras);
             this.Controls.Add(this.buttonGetLateClockIns);
@@ -1000,6 +1024,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonGetFaltasCompletasIndiv;
+        private System.Windows.Forms.Button buttonGetFaltasHorasIndiv;
     }
 }
 

@@ -20,3 +20,4 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClien
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\ReportGenerator.application
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\ReportGenerator.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\obj\Debug\ReportGenerator.pdb
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterClient\bin\Debug\System.Net.Http.dll

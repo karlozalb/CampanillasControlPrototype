@@ -79,8 +79,14 @@ namespace CampanillasControlPrototype
         public SerializableMissingTeachersList getMissingTeachers(SerializableGetMissingTeachersMessage messageReceived)
         {
             log.Info("info - cliente solicita lista de profesores con faltas de día completo");
-
-            return mMainController.getMissingTeachers(messageReceived.init, messageReceived.end);
+            if (messageReceived.teacherId != 0)
+            {
+                return mMainController.getMissingTeachers(messageReceived.init, messageReceived.end, messageReceived.teacherId);
+            }
+            else
+            {
+                return mMainController.getMissingTeachers(messageReceived.init, messageReceived.end);
+            }
         }
 
         public SerializableTeacherDataList getBadClockInsTeachersData(SerializableGetBadClockInsTeachersListMessage messageReceived)
@@ -148,8 +154,14 @@ namespace CampanillasControlPrototype
         public SerializableTeachersMissesPerHourList getMissesPerHourList(SerializableGetMissesPerHourMessage messageReceived)
         {
             log.Info("info - cliente solicita lista de faltas por horas");
-
-            return mMainController.getMissesPerHourList(messageReceived.mInit, messageReceived.mEnd);
+            if (messageReceived.teacherId != 0)
+            {
+                return mMainController.getMissesPerHourList(messageReceived.mInit, messageReceived.mEnd, messageReceived.teacherId);
+            }
+            else
+            {
+                return mMainController.getMissesPerHourList(messageReceived.mInit, messageReceived.mEnd);
+            }
         }
     }
 }

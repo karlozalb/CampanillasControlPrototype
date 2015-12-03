@@ -80,6 +80,9 @@ namespace CampanillasControlPrototype
                 case DayOfWeek.Friday:
                     stringToday = "Viernes ";
                     break;
+                default:
+                    stringToday = "No lectivo ";
+                    break;
             }
 
             return stringToday + ptoday.ToShortDateString();

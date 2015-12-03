@@ -656,7 +656,7 @@
             this.Controls.Add(this.tableLayoutPanel8);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
-            this.Text = "PresenceInformer v1.1.1";
+            this.Text = "PresenceInformer v1.1.2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);

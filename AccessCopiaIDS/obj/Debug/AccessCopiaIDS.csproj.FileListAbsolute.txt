@@ -3,4 +3,4 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\AccessCopia
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\AccessCopiaIDS\bin\Debug\AccessCopiaIDS.pdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\AccessCopiaIDS\obj\Debug\AccessCopiaIDS.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\AccessCopiaIDS\obj\Debug\AccessCopiaIDS.pdb
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\AccessCopiaIDS\obj\Debug\AccessCopiaIDS.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\AccessCopiaIDS\bin\Debug\System.Net.Http.dll

@@ -26,7 +26,7 @@ namespace CampanillasControlPrototype
             using (OleDbConnection MyConn = new OleDbConnection(mACCESSDBconnectionString))
             {
                 MyConn.Open();
-                OleDbCommand Cmd = new OleDbCommand("SELECT IdProfesor,Profesorado,Dia,Tramohorario,Asignatura,Aula,Sede FROM Horarios;", MyConn); ;
+                OleDbCommand Cmd = new OleDbCommand("SELECT IdProfesor,Profesorado,Dia,Tramohorario,Asignatura,Aula,Sede,Imprimir FROM Horarios;", MyConn); ;
                 OleDbDataReader ObjReader = Cmd.ExecuteReader();
                 while (ObjReader.Read())
                 {
@@ -37,8 +37,9 @@ namespace CampanillasControlPrototype
                     string asignatura = ObjReader[4].ToString();
                     string aula = ObjReader[5].ToString();
                     string sede = ObjReader[6].ToString();
+                    string imprimir = ObjReader[7].ToString();
 
-                    if (profesor.Length > 0 && dia.Length > 0 && hora.Length > 0) addData(profesorid,profesor, dia, hora, asignatura, aula,sede);
+                    if (imprimir.ToUpper().Contains("SI") && profesor.Length > 0 && dia.Length > 0 && hora.Length > 0) addData(profesorid,profesor, dia, hora, asignatura, aula,sede);
                 }
             }
         }

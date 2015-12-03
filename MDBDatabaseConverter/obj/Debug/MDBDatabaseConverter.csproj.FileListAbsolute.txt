@@ -3,4 +3,3 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabase
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\bin\Debug\MDBDatabaseConverter.pdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\obj\Debug\MDBDatabaseConverter.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\obj\Debug\MDBDatabaseConverter.pdb
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\MDBDatabaseConverter\obj\Debug\MDBDatabaseConverter.csprojResolveAssemblyReference.cache

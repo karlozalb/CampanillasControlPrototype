@@ -21,7 +21,7 @@ namespace CampanillasControlPrototype
         private string mDatabaseName = "iescampa_infoprofesores";
         private string mConnectionString = String.Empty;
 
-        private bool mEnabled = false;
+        private bool mEnabled = true;
 
         List<MissingNode> mMissingNodes;
         List<MissingPerHourNode> mMissingPerHourNodes;
@@ -36,11 +36,36 @@ namespace CampanillasControlPrototype
 
             Thread mainTaskThread = new Thread(new ThreadStart(taskManagement));
             mainTaskThread.Start();
-        }                
+
+            //test1();
+        }            
+        
+        public void test1()
+        {
+            string date = HttpUtility.UrlEncode(DateTime.Now.ToShortDateString());
+            string id = "46";
+
+            string url = "https://infoprofesores.euroescuela.com/add_complete_missing.php";
+
+            string myParameters = "userid=" + id + "&date=" + date + "&pass=w3bqu3ry";
+
+            using (WebClient wc = new WebClient())
+            {
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(url, myParameters);
+
+                Debug.WriteLine(HtmlResult);
+            }
+        }
+
+        public void test2()
+        {
+            sendMissingPerHour(99,DateTime.Now,1,2,3,4,5,6,7,8,9);
+        }
 
         public void taskManagement()
         {
-            while (true)
+            while (mEnabled)
             {
                 if (sendData)
                 {
@@ -52,7 +77,7 @@ namespace CampanillasControlPrototype
                         string date = HttpUtility.UrlEncode(n.date.ToShortDateString());
                         string id = n.teacherId.ToString();
 
-                        string url = "https://infoprofesores.iescampanillas.com/add_complete_missing.php";
+                        string url = "https://infoprofesores.euroescuela.com/add_complete_missing.php";
 
                         string myParameters = "userid=" + id + "&date=" + date + "&pass=w3bqu3ry";
 
@@ -61,8 +86,8 @@ namespace CampanillasControlPrototype
                             wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                             string HtmlResult = wc.UploadString(url, myParameters);
 
-                            Debug.WriteLine(HtmlResult);
-                        }                        
+                            log.Info("Subido a web: ID:" + id + " DATE: " + date + " HttpResponse:"+ HtmlResult);
+                        }
                     }
 
                     if (mMissingPerHourNodes.Count > 0)
@@ -82,16 +107,18 @@ namespace CampanillasControlPrototype
                         string sx = n.SX.ToString();
                         string gt2 = n.GT2.ToString();
 
-                        string url = "https://infoprofesores.iescampanillas.com/add_perhour_missing.php";
+                        string url = "https://infoprofesores.euroescuela.com/add_perhour_missing.php";
 
                         string myParameters = "userid=" + id + "&date=" + date + "&gt1=" + gt1 + "&p=" + p + "&s=" + s + "&t=" + t + "&r=" + r + "&c=" + c + "&q=" + q + "&sx=" + sx + "&gt2=" + gt2 + "&pass=w3bqu3ry";
+
+                        Debug.WriteLine(myParameters);
 
                         using (WebClient wc = new WebClient())
                         {
                             wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                             string HtmlResult = wc.UploadString(url, myParameters);
 
-                            Debug.WriteLine(HtmlResult);
+                            log.Info("Subido a web: ID:" + id + " DATE: " + date + "gt1: "+gt1+" p: "+p+" s: "+s+" t: "+t+" r: "+r+" c: "+c+" q: "+q+" s: "+s+" gt2: "+gt2+" HttpResponse:" + HtmlResult);
                         }
                     }
 
@@ -133,6 +160,11 @@ namespace CampanillasControlPrototype
             newNode.GT2 = pgt2;
 
             mMissingPerHourNodes.Add(newNode);
+        }
+
+        public void stopMySQL()
+        {
+            mEnabled = false;
         }
 
 

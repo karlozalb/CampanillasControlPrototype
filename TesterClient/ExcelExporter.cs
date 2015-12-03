@@ -76,7 +76,19 @@ namespace TesterClient
                     for (int j = 0; j < dGV.Rows[i].Cells.Count; j++)
                     {
                         worksheet.Cells[i + 2, j + 1].Value = dGV.Rows[i].Cells[j].Value;
-                        worksheet.Cells[i + 2, j + 1].Style.Fill.BackgroundColor.SetColor(dGV.Rows[i].Cells[j].Style.BackColor);
+
+                        Color backColor = dGV.Rows[i].Cells[j].Style.BackColor;
+
+                        if (backColor.R != 0 || backColor.G != 0 || backColor.B != 0)
+                        {
+                            worksheet.Cells[i + 2, j + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            worksheet.Cells[i + 2, j + 1].Style.Fill.BackgroundColor.SetColor(dGV.Rows[i].Cells[j].Style.BackColor);
+                        }
+                        else
+                        {
+                            worksheet.Cells[i + 2, j + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                            worksheet.Cells[i + 2, j + 1].Style.Fill.BackgroundColor.SetColor(Color.White);
+                        }
                         if (j == 0)
                         {
                             worksheet.Cells[i + 2, j + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;

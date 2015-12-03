@@ -28,7 +28,7 @@ namespace CampanillasControlPrototype
         {
             mMySQLController = pmysqlcontroller;
 
-            //DB_PATH = Directory.GetCurrentDirectory()+"\\DB\\";
+            DB_PATH = Directory.GetCurrentDirectory()+"\\DB\\";
             fullConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + DB_PATH + DB_NAME + "\";Integrated Security=True";
             log.Info("info cadena de conexión DB SQL Server: "+ fullConnectionString);
         }
@@ -413,7 +413,7 @@ namespace CampanillasControlPrototype
             }
         }   
 
-        public SerializableTeachersMissesPerHourList getTeacherMissesPerHourList(List<PersonalNode> ppersonal,DateTime pinit,DateTime pend)
+        public SerializableTeachersMissesPerHourList getTeacherMissesPerHourList(List<PersonalNode> ppersonal,DateTime pinit,DateTime pend,int pteacherid)
         {
             SerializableTeachersMissesPerHourList toReturnList = new SerializableTeachersMissesPerHourList();
             
@@ -422,8 +422,16 @@ namespace CampanillasControlPrototype
                 conn.ConnectionString = fullConnectionString;
                 conn.Open();
 
-                //Para evitar duplicados.
-                SqlCommand command = new SqlCommand("SELECT * FROM FaltasPorHoras WHERE Fecha >= convert(datetime,'" + pinit.ToShortDateString() + "',105) and Fecha <= convert(datetime,'" + pend.ToShortDateString() + "',105) ORDER BY TeacherId,Fecha ASC;", conn);
+                SqlCommand command;
+
+                if (pteacherid != 0)
+                {
+                    command = new SqlCommand("SELECT * FROM FaltasPorHoras WHERE TeacherId="+pteacherid+" AND Fecha >= convert(datetime,'" + pinit.ToShortDateString() + "',105) and Fecha <= convert(datetime,'" + pend.ToShortDateString() + "',105) ORDER BY TeacherId,Fecha ASC;", conn);
+                }
+                else
+                {
+                    command = new SqlCommand("SELECT * FROM FaltasPorHoras WHERE Fecha >= convert(datetime,'" + pinit.ToShortDateString() + "',105) and Fecha <= convert(datetime,'" + pend.ToShortDateString() + "',105) ORDER BY TeacherId,Fecha ASC;", conn);
+                }
 
                 int currentTeacherId = -1;
                 SerializableTeachersMissesPerHourList.MissesPerHourTeacherNode teacherNode = null;
@@ -529,9 +537,19 @@ namespace CampanillasControlPrototype
             return adList;
         }
 
-        public SerializableMissingTeachersList getMissingTeachers(List<PersonalNode> ppersonallist,DateTime pinit,DateTime pend)
+        public SerializableMissingTeachersList getMissingTeachers(List<PersonalNode> ppersonallist,DateTime pinit,DateTime pend,int pteacherid)
         {
-            string query = "SELECT TeacherId,Fecha FROM Faltas WHERE Fecha >= convert(datetime,'" + pinit.ToShortDateString() + "',105) and Fecha <= convert(datetime,'" + pend.ToShortDateString() + "',105) ORDER BY TeacherId,Fecha ASC;";
+            string query = "";
+
+            if (pteacherid != 0)
+            {
+                query = "SELECT TeacherId,Fecha FROM Faltas WHERE TeacherId="+pteacherid+" AND Fecha >= convert(datetime,'" + pinit.ToShortDateString() + "',105) and Fecha <= convert(datetime,'" + pend.ToShortDateString() + "',105) ORDER BY TeacherId,Fecha ASC;";
+            }
+            else
+            {
+                query = "SELECT TeacherId,Fecha FROM Faltas WHERE Fecha >= convert(datetime,'" + pinit.ToShortDateString() + "',105) and Fecha <= convert(datetime,'" + pend.ToShortDateString() + "',105) ORDER BY TeacherId,Fecha ASC;";
+            }
+
 
             SerializableMissingTeachersList missingTeachers = new SerializableMissingTeachersList();
 

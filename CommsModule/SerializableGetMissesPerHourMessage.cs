@@ -11,6 +11,7 @@ namespace CommsModule
     public class SerializableGetMissesPerHourMessage : ISerializable
     {
         public DateTime mInit, mEnd;
+        public int teacherId;
 
         public SerializableGetMissesPerHourMessage()
         {
@@ -21,12 +22,14 @@ namespace CommsModule
         {
             mInit = info.GetDateTime("mInit");
             mEnd = info.GetDateTime("mEnd");
+            teacherId = info.GetInt32("teacherId");
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("mInit", mInit);
             info.AddValue("mEnd", mEnd);
+            info.AddValue("teacherId", teacherId);
         }
     }
 }

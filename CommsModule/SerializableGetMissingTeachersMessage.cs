@@ -11,6 +11,7 @@ namespace CommsModule
     public class SerializableGetMissingTeachersMessage : ISerializable
     {
         public DateTime init, end;
+        public int teacherId;
 
         public SerializableGetMissingTeachersMessage()
         {
@@ -21,12 +22,14 @@ namespace CommsModule
         {
             init = (DateTime)info.GetValue("init", typeof(DateTime));
             end = (DateTime)info.GetValue("end", typeof(DateTime));
+            teacherId = info.GetInt32("teacherId");
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("init", init);
             info.AddValue("end", end);
+            info.AddValue("teacherId", teacherId);
         }
     }
 }

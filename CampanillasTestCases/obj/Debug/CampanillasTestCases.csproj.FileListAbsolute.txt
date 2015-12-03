@@ -13,10 +13,8 @@ C:\Users\karloz\Documents\GitHub\CampanillasControlPrototype\CampanillasTestCase
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\DB\estructura.mdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasTestCases.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasTestCases.pdb
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasControlPrototype.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CommsModule.dll
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CampanillasControlPrototype.pdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\CommsModule.pdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\obj\Debug\CampanillasTestCases.csprojResolveAssemblyReference.cache
@@ -25,5 +23,6 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\Campanillas
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\DB\ControlDB.mdf
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\DB\ControlDB_log.ldf
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\log4net.dll
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\MySql.Data.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\log4net.xml
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\PresenceInformer.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\CampanillasTestCases\bin\Debug\PresenceInformer.pdb

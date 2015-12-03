@@ -33,6 +33,7 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.listBoxNoSchoolDays = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // monthCalendar
@@ -76,11 +77,20 @@
             // 
             this.listBoxNoSchoolDays.FormattingEnabled = true;
             this.listBoxNoSchoolDays.IntegralHeight = false;
-            this.listBoxNoSchoolDays.Location = new System.Drawing.Point(222, 18);
+            this.listBoxNoSchoolDays.Location = new System.Drawing.Point(278, 42);
             this.listBoxNoSchoolDays.Name = "listBoxNoSchoolDays";
             this.listBoxNoSchoolDays.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxNoSchoolDays.Size = new System.Drawing.Size(192, 162);
+            this.listBoxNoSchoolDays.Size = new System.Drawing.Size(136, 138);
             this.listBoxNoSchoolDays.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(278, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Lista de días no lectivos";
             // 
             // AddDeleteNoSchoolDay
             // 
@@ -88,6 +98,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(433, 283);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxNoSchoolDays);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonDelete);
@@ -98,6 +109,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de días no lectivos";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.ListBox listBoxNoSchoolDays;
+        private System.Windows.Forms.Label label1;
     }
 }

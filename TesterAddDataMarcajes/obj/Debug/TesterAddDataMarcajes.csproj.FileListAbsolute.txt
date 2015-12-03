@@ -4,9 +4,7 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDa
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\TesterAddDataMarcajes.application
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\TesterAddDataMarcajes.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\TesterAddDataMarcajes.pdb
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\CampanillasControlPrototype.exe
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\CommsModule.dll
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\CampanillasControlPrototype.pdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\CommsModule.pdb
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\obj\Debug\TesterAddDataMarcajes.Form1.resources
@@ -19,5 +17,6 @@ D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDa
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\DB\ControlDB.mdf
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\DB\ControlDB_log.ldf
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\log4net.dll
-D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\MySql.Data.dll
 D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\log4net.xml
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\PresenceInformer.exe
+D:\Documents\Visual Studio 2015\Projects\CampanillasControlPrototype\TesterAddDataMarcajes\bin\Debug\PresenceInformer.pdb
